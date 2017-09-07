@@ -1,3 +1,3 @@
-client/node_modules
-server/vendors
-server/var
+node_modules
+vendors
+var
