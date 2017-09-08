@@ -16,7 +16,14 @@
     transition: background .3s cubic-bezier(.645,.045,.355,1),width .15s cubic-bezier(.645,.045,.355,1);
 }
 
-.navbar > .brand {
+.navbar .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navbar .brand {
     display: flex;
     margin-right: 1rem;
     font-size: 1.25rem;
@@ -24,40 +31,55 @@
     white-space: nowrap;
     justify-content: center;
     align-items: center;
-    width: 240px;
+    color: #404040;
+    text-decoration: none;
+    /*width: 240px;
     color: hsla(0,0%,100%,.67);
-    background: #404040;
+    background: #404040;*/
 }
 
-.navbar > .separator {
+.navbar .brand:hover {
+    color: #333;
+}
+
+.navbar .brand img {
+    max-height: 42px;
+}
+
+.navbar .separator {
     display: flex;
     flex: 10 0 auto;
 }
 
-.navbar > .navitems {
+.navbar .navitems {
     list-style: none;
     display: flex;
     flex-direction: row;
     margin: 0 1rem;
     padding: 0;
 }
-.navbar > ul.navitems li {
+
+.navbar ul.navitems li {
     display: flex;
     background-color: #fff;
 }
-.navbar > ul.navitems li > a {
+
+.navbar ul.navitems li > a {
     color: #333;
     text-decoration: none;
 }
-.navbar > ul.navitems > li > a {
+
+.navbar ul.navitems > li > a {
     line-height: 44px;
     border-bottom: 2px solid transparent;
     padding: 0 20px;
     margin: 0;
 }
-.navbar > ul.navitems li:hover > a {
+
+.navbar ul.navitems li:hover > a {
     color: #108ee9;
 }
-.navbar > ul.navitems > li:hover > a {
+
+.navbar ul.navitems > li:hover > a {
     border-color: #108ee9;
 }
