@@ -1,9 +1,11 @@
-.text-center { text-align: center; }
+.text-center { text-align: center!important; }
 
-.pull-right { float: right; }
+.pull-right { float: right!important; }
 
-.pull-left { float: left; }
+.pull-left { float: left!important; }
 
-.clearfix { clear: both; }
+.clearfix { clear: both!important; }
 
-.full-width{ width: 100% }
+.full-width{ width: 100%!important; }
+
+.fixed { position: fixed!important; }
