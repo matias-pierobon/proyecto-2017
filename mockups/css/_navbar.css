@@ -77,9 +77,9 @@
 }
 
 .navbar ul.navitems li:hover > a {
-    color: #108ee9;
+    color: #62a8ea;
 }
 
 .navbar ul.navitems > li:hover > a {
-    border-color: #108ee9;
+    border-color: #62a8ea;
 }
