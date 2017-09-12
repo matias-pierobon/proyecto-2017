@@ -6,3 +6,8 @@ a {
 a {
     background-color: transparent;
 }
+
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 11px;
+}
