@@ -1,0 +1,8 @@
+.navbar .brand {
+    width: 240px;
+    color: #fff;
+    background: #62A8EA;
+}
+.navbar .brand:hover {
+    color: #fafafa;
+}
