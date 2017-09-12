@@ -1,0 +1,50 @@
+{
+  "short_name": "HspGutierrez",
+  "name": "Hospital Gutiérrez",
+  "icons": [
+    {
+      "src": "./img/icon.png",
+      "sizes": "193x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icon.png",
+      "sizes": "38x37",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icon.png",
+      "sizes": "50x49",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icon.png",
+      "sizes": "74x73",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icon.png",
+      "sizes": "98x97",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icon.png",
+      "sizes": "146x145",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icon.png",
+      "sizes": "194x193",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icon.png",
+      "sizes": "513x511",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/#",
+  "display": "standalone",
+  "theme_color": "#62a8ea",
+  "background_color": "#f1f4f5"
+}
