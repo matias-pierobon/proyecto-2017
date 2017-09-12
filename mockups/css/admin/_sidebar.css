@@ -1,0 +1,99 @@
+.sidebar{
+    z-index: 1400;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    top: 46px;
+    bottom: 0;
+    width: 240px;
+    background: #263238;
+    color: rgba(163,175,183,.9);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    font-size: 14px;    
+}
+
+.sidebar ul.sidemenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.sidebar ul.sidemenu li{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.sidebar ul.sidemenu > li{
+    white-space: nowrap;
+    line-height: 34px;
+}
+
+.sidebar ul.sidemenu > li.category{
+    font-size: 15px;
+    padding: 0 24px;
+    color: #76838f;
+    line-height: 38px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.sidebar ul.sidemenu li a{
+    color: rgba(163,175,183,.9);
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+}
+
+.sidebar ul.sidemenu > li > a{
+    padding: 0 30px;
+    line-height: 38px;
+    font-size: 14px;
+}
+
+.sidebar ul.sidemenu li:hover > a {
+    color: rgba(255,255,255,.8);
+    background-color: rgba(255,255,255,.02);
+}
+
+.sidebar ul.sidemenu li.active {
+    color: #fff;
+    background: rgba(0,0,0,.06);
+}
+
+.sidebar ul.sidemenu > li > a > i{
+    margin-right: 14px;
+}
+
+.sidebar footer{
+    display: flex;
+    direction: row;
+    align-items: center;
+    justify-content: stretch;
+}
+
+.sidebar footer a {
+    display: flex;
+    height: 76px;
+    padding: 26px 0;
+    color: #76838f;
+    font-size: 16px;
+    text-align: center;
+    background-color: #21292e;
+    align-content: center;
+    justify-content: center;
+    flex: 1 0 auto;
+}
+
+.sidebar footer a:hover {
+    background-color: #1e2427;
+}
