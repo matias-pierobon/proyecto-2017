@@ -24,9 +24,19 @@
 
 .btn:focus,
 .btn:hover {
-    color: #108ee9;
+    color: #62a8ea;
     background-color: #fff;
-    border-color: #108ee9;
+    border-color: #62a8ea;
+}
+
+.btn.primary{
+    color: #fff;
+    background-color: #62a8ea;
+    border-color: #62a8ea;
+}
+.btn.btn.primary:hover, .btn.btn.primary:focus{
+    background-color: #358fe4;
+    border-color: #2c8ae3;
 }
 
 .btn[disabled],
