@@ -1,0 +1,7 @@
+@import "admin/_sidebar.css";
+@import "admin/_navbar.css";
+@import "admin/_page.css";
+
+body{
+    background-color: #f1f4f5;
+}
