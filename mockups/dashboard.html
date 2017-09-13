@@ -31,8 +31,9 @@
     <header>
         <nav class="navbar fixed">
             <a class="brand" href="./dashboard.html">
+                <i class="fa fa-bars"></i>
                 <!-- <img src="./img/logo.svg" height="36px" alt="Hospital Guitiérrez" /> -->
-                Hospital Guitiérrez
+                <span>Hospital Guitiérrez</span>
             </a>
             <span class="separator"></span>
             <form action="./index.html" method="GET" class="inline">
@@ -45,33 +46,34 @@
                 <li><a href="#">John Doe</a></li>
             </ul>
         </nav>
+        <div class="scrim"></div>
+        <aside class="sidebar fixed">
+            <ul class="sidemenu">
+                <li class="category">General</li>
+                <li class="active"><a href="./dashboard.html" alt="Dashboard">
+                    <i class="fa fa-dashboard"></i> Dashboard
+                </a></li>
+                <li><a href="#" alt="Pacientes">
+                    <i class="fa fa-users"></i> Pacientes
+                </a></li>
+                <li><a href="#" alt="Turnos">
+                    <i class="fa fa-calendar"></i> Turnos
+                </a></li>
+                <li class="category">Administración</li>
+                <li><a href="#" alt="Usuarios">
+                    <i class="fa fa-users"></i> Usuarios
+                </a></li>
+                <li><a href="#" alt="Permisos">
+                    <i class="fa fa-key"></i> Permisos
+                </a></li>
+            </ul>
+            <footer>
+                <a href="#"><i class="fa fa-cog"></i></a>
+                <a href="./index.html"><i class="fa fa-home"></i></a>
+                <a href="./login.html"><i class="fa fa-sign-out"></i></a>
+            </footer>
+        </aside>
     </header>
-    <aside class="sidebar fixed">
-        <ul class="sidemenu">
-            <li class="category">General</li>
-            <li class="active"><a href="./dashboard.html" alt="Dashboard">
-                <i class="fa fa-dashboard"></i> Dashboard
-            </a></li>
-            <li><a href="#" alt="Pacientes">
-                <i class="fa fa-users"></i> Pacientes
-            </a></li>
-            <li><a href="#" alt="Turnos">
-                <i class="fa fa-calendar"></i> Turnos
-            </a></li>
-            <li class="category">Administración</li>
-            <li><a href="#" alt="Usuarios">
-                <i class="fa fa-users"></i> Usuarios
-            </a></li>
-            <li><a href="#" alt="Permisos">
-                <i class="fa fa-key"></i> Permisos
-            </a></li>
-        </ul>
-        <footer>
-            <a href="#"><i class="fa fa-cog"></i></a>
-            <a href="./index.html"><i class="fa fa-home"></i></a>
-            <a href="./login.html"><i class="fa fa-sign-out"></i></a>
-        </footer>
-    </aside>
     <section class="page">
         <div class="content">
             Hola
@@ -90,6 +92,19 @@
             </div>
         </div>
     </section>  -->
+    <script>
+        const header = document.querySelector("body > header")
+        const brand = header.querySelector(".navbar .brand")
+        const scrim  = header.children[1]
+
+        brand.onclick = (e) => {
+            e.preventDefault()
+            header.classList.toggle("open")
+        } 
+
+        scrim.onclick = (e) => header.classList.remove("open")
+        
+    </script>
 </body>
 
 </html>
