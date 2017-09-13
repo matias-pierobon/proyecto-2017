@@ -12,6 +12,9 @@
     color: rgba(163,175,183,.9);
     box-shadow: 0 2px 4px rgba(0,0,0,.08);
     font-size: 14px;    
+    transform: translateX(0);
+    transition: all 500ms ease-in-out;
+    z-index: 1052;
 }
 
 .sidebar ul.sidemenu {
@@ -96,4 +99,25 @@
 
 .sidebar footer a:hover {
     background-color: #1e2427;
+}
+
+header > .scrim {
+    display: none;
+    z-index: 1051;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+@media (max-width: 991px) {
+    header:not(.open) .sidebar {
+        transform: translateX(-100%)
+    }
+
+    header.open  > .scrim{
+        display: block;
+    }
 }
