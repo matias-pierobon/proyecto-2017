@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <meta name="theme-color" content="#62a8ea">
-    <meta name="keywords"content="Hospital Ricardo Gutiérrez">
+    <meta name="keywords" content="Hospital Ricardo Gutiérrez">
     <meta name="description" content="Plataforma web para el Hospital Gutiérrez">
     <meta name="robots" content="index,follow">
     <meta property="og:url" content="https://grupo35.proyecto2017.linti.unlp.edu.ar/" />
@@ -35,16 +35,17 @@
                 <!-- <img src="./img/logo.svg" height="36px" alt="Hospital Guitiérrez" /> -->
                 <span>Hospital Guitiérrez</span>
             </a>
-            <span class="separator"></span>
-            <form action="./index.html" method="GET" class="inline">
-                <div class="input-affix">
-                    <input type="text" placeholder="Buscar" id="search" name="search" alt="Buscar en la web" value="">
-                    <i class="suffix fa fa-search"></i>
-                </div>
-            </form>
-            <ul class="navitems">
-                <li><a href="#">John Doe</a></li>
-            </ul>
+            <div class="nav-group">
+                <form action="./index.html" method="GET" class="inline">
+                    <div class="input-affix">
+                        <input type="text" placeholder="Buscar" id="search" name="search" alt="Buscar en la web" value="">
+                        <i class="suffix fa fa-search"></i>
+                    </div>
+                </form>
+                <ul class="navitems">
+                    <li><a href="#">John Doe</a></li>
+                </ul>
+            </div>
         </nav>
         <div class="scrim"></div>
         <aside class="sidebar fixed">
@@ -95,15 +96,14 @@
     <script>
         const header = document.querySelector("body > header")
         const brand = header.querySelector(".navbar .brand")
-        const scrim  = header.children[1]
+        const scrim = header.children[1]
 
         brand.onclick = (e) => {
             e.preventDefault()
             header.classList.toggle("open")
-        } 
+        }
 
         scrim.onclick = (e) => header.classList.remove("open")
-        
     </script>
 </body>
 
