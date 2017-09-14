@@ -9,6 +9,8 @@
 .navbar .brand{
     color: #fff;
     cursor: pointer;
+    margin: 0;
+    flex: 1 0 auto;
 }
 
 .navbar .brand:hover {
@@ -43,8 +45,16 @@
     margin-left: 6px;
 }
 
-
 @media (max-width: 991px) {
+    .navbar header {
+        width: 66px;
+    }
+    .navbar header .brand {
+        text-align: center;
+    }
+}
+
+@media (max-width: 575px) {
     .navbar header{
         width: initial;
     }
