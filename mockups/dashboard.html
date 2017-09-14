@@ -21,7 +21,7 @@
     <link rel="manifest" href="./manifest.json">
     <link rel="shortcut icon" href="./favicon.ico">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="./css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/admin.css">
@@ -30,21 +30,30 @@
 <body>
     <header>
         <nav class="navbar fixed">
-            <a class="brand" href="./dashboard.html">
-                <i class="fa fa-bars"></i>
-                <!-- <img src="./img/logo.svg" height="36px" alt="Hospital Guitiérrez" /> -->
-                <span>Hospital Guitiérrez</span>
-            </a>
+            <header class="nav-group">
+                <div class="container-fluid">
+                    <i class="d-none d-xs-flex d-sm-block hamburger" id="menu">
+                            <span class="bar"></span>
+                    </i>
+                    <a class="brand" href="./dashboard.html">
+                    <img src="./img/logo.svg" height="36px" alt="Hospital Guitiérrez" />
+                    <span class="d-none d-lg-block d-xl-flex">Hospital Guitiérrez</span>
+                </a>
+                    <i class="d-none d-xs-block d-sm-block fa fa-ellipsis-h" id="tools"></i>
+                </div>
+            </header>
             <div class="nav-group">
-                <form action="./index.html" method="GET" class="inline">
-                    <div class="input-affix">
-                        <input type="text" placeholder="Buscar" id="search" name="search" alt="Buscar en la web" value="">
-                        <i class="suffix fa fa-search"></i>
-                    </div>
-                </form>
-                <ul class="navitems">
-                    <li><a href="#">John Doe</a></li>
-                </ul>
+                <div class="container-fluid">
+                    <form action="./index.html" method="GET" class="inline">
+                        <div class="input-affix">
+                            <input type="text" placeholder="Buscar" id="search" name="search" alt="Buscar en la web" value="">
+                            <i class="suffix fa fa-search"></i>
+                        </div>
+                    </form>
+                    <ul class="navitems">
+                        <li><a href="#">John Doe</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <div class="scrim"></div>
@@ -95,15 +104,29 @@
     </section>  -->
     <script>
         const header = document.querySelector("body > header")
-        const brand = header.querySelector(".navbar .brand")
+        const menu = header.querySelector(".navbar #menu")
         const scrim = header.children[1]
 
-        brand.onclick = (e) => {
+        menu.onclick = (e) => {
             e.preventDefault()
             header.classList.toggle("open")
+
+            if(header.classList.contains("open")){
+                menu.classList.remove("hamburger")
+                menu.classList.add("close")
+            }else{
+                menu.classList.add("hamburger")
+                menu.classList.remove("close")
+            }
         }
 
-        scrim.onclick = (e) => header.classList.remove("open")
+        scrim.onclick = (e) => {
+            e.preventDefault()
+            header.classList.remove("open")
+
+            menu.classList.add("hamburger")
+            menu.classList.remove("close")
+        }
     </script>
 </body>
 

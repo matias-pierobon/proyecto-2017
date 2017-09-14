@@ -5,9 +5,9 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
-    top: 46px;
+    top: 66px;
     bottom: 0;
-    width: 240px;
+    width: 260px;
     background: #263238;
     color: rgba(163,175,183,.9);
     box-shadow: 0 2px 4px rgba(0,0,0,.08);
@@ -106,7 +106,7 @@ header > .scrim {
     z-index: 1051;
     background: transparent;
     position: fixed;
-    top: 0;
+    top: 66px;
     left: 0;
     bottom: 0;
     right: 0;

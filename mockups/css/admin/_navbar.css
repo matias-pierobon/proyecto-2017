@@ -1,33 +1,52 @@
-.navbar .brand {
-    width: 240px;
+.navbar header {
+    width: 260px;
     color: #fff;
     background: #62A8EA;
     transition: width 500ms ease-in-out;
     line-height: 46px;
 }
+
+.navbar .brand{
+    color: #fff;
+    cursor: pointer;
+}
+
 .navbar .brand:hover {
     color: #fafafa;
 }
 
-.navbar .brand i {
-    display: none;
+.navbar .brand img{
+    filter: brightness(10%) invert();
+}
+
+.navbar header i {
+    height: 66px;
+    padding: 25px 15px;
+    flex-direction: column;
+}
+.navbar header i#tools {
+    font-size: 16px;
+}
+
+.navbar header i.hamburger .bar,
+.navbar header i.hamburger:before,
+.navbar header i.hamburger:after {
+    background-color: #fff;
+}
+
+.navbar header i.close:before,
+.navbar header i.close:after {
+    background-color: #fff;
+}
+
+.navbar .brand span{
+    margin-left: 6px;
 }
 
 
 @media (max-width: 991px) {
-    header:not(.open) .navbar .brand {
-        cursor: pointer;
-        width: 46px;
-        height: 46px;
-        font-size: 22px;
-    }
-
-    header:not(.open) .navbar .brand span {
-        display: none;
-    }
-
-    header:not(.open) .navbar .brand i {
-        display: block;
+    .navbar header{
+        width: initial;
     }
 
 }

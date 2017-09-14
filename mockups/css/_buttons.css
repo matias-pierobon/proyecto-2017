@@ -39,6 +39,13 @@
     border-color: #2c8ae3;
 }
 
+.btn.icon{
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+}
+
 .btn[disabled],
 .btn:disabled {
     opacity: 0.65;
