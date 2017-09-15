@@ -45,13 +45,14 @@ input:focus {
     transform: translateY(-50%);
     z-index: 2;
     color: rgba(0,0,0,.65);
+    font-size: 18px;
 }
 
 .input-affix .prefix{ left: 7px; }
-.input-affix .prefix + input{ padding-left: 24px; }
+.input-affix .prefix + input{ padding-left: 30px; }
 
 .input-affix .suffix{ right: 7px; }
-.input-affix .suffix + input{ padding-right: 24px; }
+.input-affix .suffix + input{ padding-right: 30px; }
 
 input[type=checkbox], input[type=radio] {
     margin: 4px 0 0;
@@ -111,9 +112,25 @@ input[type=checkbox] {
     margin-left: -20px;
     text-align: center;
     padding-top: 1px;
-    font-size: 12px;
+    font-size: 15px;
     color: #fff;
-    font-family: FontAwesome;
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    /* Preferred icon size */
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: "liga";
     z-index: 2;
 }
 
@@ -122,5 +139,5 @@ input[type=checkbox] {
     border-color: #62a8ea;
 }
 .checkbox input[type=checkbox]:checked+label::after{
-    content: "\f00c";
+    content: "check";
 }
