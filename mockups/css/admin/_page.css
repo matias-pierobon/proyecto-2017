@@ -6,7 +6,7 @@
     align-items: stretch;
     justify-content: stretch;
     min-height: 100vh;
-    transition: all 500ms ease-in-out;
+    transition: padding 500ms ease-in-out;
 }
 
 .page .content{
@@ -27,13 +27,18 @@
     border-top: 1px solid #e4eaec;
     min-height: 44px;
 }
-@media(max-width: 767px){
+
+@media (max-width: 991px) {
+    .page{
+        padding-left: 90px;
+    }
+}
+
+@media (max-width: 575px) {
+
     .page footer{
         flex-direction: column;
     }
-}
-@media (max-width: 991px) {
-
     .page {
         padding-left: 0;
     }

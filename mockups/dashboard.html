@@ -32,14 +32,14 @@
         <nav class="navbar fixed">
             <header class="nav-group">
                 <div class="container-fluid">
-                    <i class="d-none d-xs-flex d-sm-block hamburger" id="menu">
+                    <i class="d-none d-xs-flex hamburger" id="menu">
                             <span class="bar"></span>
                     </i>
                     <a class="brand" href="./dashboard.html">
                     <img src="./img/logo.svg" height="36px" alt="Hospital Guitiérrez" />
                     <span class="d-none d-lg-block d-xl-flex">Hospital Guitiérrez</span>
                 </a>
-                    <i class="d-none d-xs-block d-sm-block material-icons" id="tools">more_horiz</i>
+                    <i class="d-none d-xs-flex material-icons" id="tools">more_horiz</i>
                 </div>
             </header>
             <div class="nav-group">
@@ -61,26 +61,26 @@
             <ul class="sidemenu">
                 <li class="category">General</li>
                 <li class="active"><a href="./dashboard.html" alt="Dashboard">
-                    <i class="material-icons">dashboard</i> Dashboard
+                    <i class="material-icons">dashboard</i> <span>Dashboard</span>
                 </a></li>
                 <li><a href="#" alt="Pacientes">
-                    <i class="material-icons">contacts</i> Pacientes
+                    <i class="material-icons">contacts</i> <span>Pacientes</span>
                 </a></li>
                 <li><a href="#" alt="Turnos">
-                    <i class="material-icons">schedule</i> Turnos
+                    <i class="material-icons">schedule</i> <span>Turnos</span>
                 </a></li>
                 <li class="category">Administración</li>
                 <li><a href="#" alt="Usuarios">
-                    <i class="material-icons">people</i> Usuarios
+                    <i class="material-icons">people</i> <span>Usuarios</span>
                 </a></li>
                 <li><a href="#" alt="Permisos">
-                    <i class="material-icons">security</i>Permisos
+                    <i class="material-icons">security</i> <span>Permisos</span>
                 </a></li>
             </ul>
             <footer>
-                <a href="#"><i class="fa fa-cog"></i></a>
-                <a href="./index.html"><i class="fa fa-home"></i></a>
-                <a href="./login.html"><i class="fa fa-sign-out"></i></a>
+                <a href="#" class="d-sm-none d-md-none"><i class="material-icons">settings</i></a>
+                <a href="./index.html"><i class="material-icons">home</i></a>
+                <a href="./login.html" class="d-sm-none d-md-none"><i class="material-icons">power_settings_new</i></a>
             </footer>
         </aside>
     </header>

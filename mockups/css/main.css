@@ -1,9 +1,9 @@
+@import "_icons.css";
 @import "_commons.css";
-@import "_navbar.css";
+@import "_grid.css";
 @import "_forms.css";
 @import "_buttons.css";
-@import "_grid.css";
-@import "_icons.css";
+@import "_navbar.css";
 @import "_utils.css";
 
 *, ::before, ::after{

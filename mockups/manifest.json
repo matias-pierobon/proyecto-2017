@@ -43,7 +43,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/#",
+  "start_url": "https://grupo35.proyecto2017.linti.unlp.edu.ar/mockups/",
   "display": "standalone",
   "theme_color": "#62a8ea",
   "background_color": "#f1f4f5"
