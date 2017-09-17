@@ -22,3 +22,7 @@ body {
     color: rgba(0,0,0,.65);;
     background-color: #fafafa;
 }
+
+body>header {
+    display: flex;
+}
