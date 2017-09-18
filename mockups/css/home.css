@@ -1,9 +1,13 @@
 body > section {
     padding: 100px 0;
-    background: #fafafa;
+    background-color: #fafafa;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.home-page:nth-child(odd) {
+body > section:nth-child(odd) {
     z-index: 4;
     -webkit-box-shadow: 0 0 15px rgba(0,0,0,.75);
     box-shadow: 0 0 15px rgba(0,0,0,.75);
@@ -45,7 +49,7 @@ body > section .hero h1{
     overflow: hidden;
     display: block;
     z-index: -1;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
 }
@@ -98,4 +102,124 @@ body > section .hero h1{
     -webkit-font-smoothing: antialiased;
     padding-bottom: 27px;
     margin: 0px;
+}
+
+
+
+.tech-list .item {
+    text-align: center;
+    margin: 15px 0 25px;
+    font-size: 15px;
+    font-weight: 200;
+}
+.tech-list .item > h3 {
+    color: #666;
+    margin: 15px auto;
+    font-weight: 400;
+    font-size: 20px;
+}
+.tech-list .item > i {
+    color: #019bf0;
+    background-color: #f9f9f9;
+    border-radius: 100%;
+    display: inline-block;
+    font-size: 42px;
+    height: 90px;
+    line-height: 90px;
+    max-width: 100%;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 90px;
+    word-spacing: 1px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border-collapse: collapse;
+}
+
+.tech-list .item  > i:after {
+    content: "";
+    border: 1px solid rgba(0,0,0,0.05);
+    display: block;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+    border-radius: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.tech-list  .item:hover > i {
+    background-color: #019bf0;
+    color: #fff;
+}
+
+.tech-list .item:hover > i:after {
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+    border-color: #019bf0;
+}
+
+#quote{
+    background-color: transparent;
+    background-image: url('../img/focus.jpg'); 
+}
+
+.quote-box{
+    position: relative;
+    font-weight: 200;
+}
+
+.quote-box i{
+    position: absolute;
+    left: 50%;
+    color: #333;
+    transform: translate3d(-50%,-50%,0);
+    z-index: 5;
+    border-radius: 100%;
+    padding: 20px;
+    background: #fff;
+}
+
+.quote-box blockquote{
+    background: #fff none repeat scroll 0 0;
+    border: medium none;
+    font-size: 18px;
+    font-style: normal;
+    line-height: 24px;
+    margin: 0;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.quote-box blockquote:after{
+    content: "";
+    border-color: #fff transparent transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 8px;
+    bottom: -16px;
+    display: block;
+    height: 0;
+    left: 50%;
+    margin-left: -4px;
+    position: absolute;
+    right: 0;
+    width: 0;
+}
+.quote-box .from{
+    margin: 0;
+    margin-top: 20px;
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    color: #fcfcfc;
+    text-shadow: 0 0 5px rgba(0,0,0,.4);
 }
