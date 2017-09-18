@@ -111,6 +111,10 @@ body > section .hero h1{
     margin: 15px 0 25px;
     font-size: 15px;
     font-weight: 200;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 .tech-list .item > h3 {
     color: #666;
@@ -222,4 +226,23 @@ body > section .hero h1{
     font-size: 24px;
     color: #fcfcfc;
     text-shadow: 0 0 5px rgba(0,0,0,.4);
+}
+
+body > footer{
+    padding: 10px 30px;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    border-top: 1px solid #e4eaec;
+    min-height: 44px;
+}
+
+@media (max-width: 575px) {
+
+    body > footer{
+        flex-direction: column;
+    }
 }
