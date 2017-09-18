@@ -44,8 +44,8 @@
     color: #404040;
     text-decoration: none;
 }
-.navbar .brand img {
-    margin-right: .75rem;
+.navbar .brand img+* {
+    margin-left: .75rem;
 }
 
 .navbar .brand:hover {
