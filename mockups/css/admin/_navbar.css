@@ -41,10 +41,6 @@
     background-color: #fff;
 }
 
-.navbar .brand span{
-    margin-left: 6px;
-}
-
 @media (max-width: 991px) {
     .navbar header {
         width: 90px;

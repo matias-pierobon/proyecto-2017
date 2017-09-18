@@ -1,3 +1,7 @@
+body{
+    overflow-x: hidden;
+}
+
 body > section {
     padding: 100px 0;
     background-color: #fafafa;
@@ -51,6 +55,7 @@ body > section .hero h1{
     z-index: -1;
     position: fixed;
     top: 0;
+    left: 0;
     bottom: 0;
 }
 .bg-section .background video{
@@ -104,6 +109,10 @@ body > section .hero h1{
     margin: 0px;
 }
 
+#video{
+    min-height: 720px;
+    padding-top: 300px;
+}
 
 
 .tech-list .item {
