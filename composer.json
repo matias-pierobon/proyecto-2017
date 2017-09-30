@@ -1,0 +1,15 @@
+{
+    "name": "matias/proyecto-2017",
+    "description": "Sistema de gestion para el sector de pedagogiía del hospital gutiérrez",
+    "type": "project",
+    "require": {
+        "twig/twig": "1.X"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matias Pierobon",
+            "email": "matias.pierobonm@gmail.com"
+        }
+    ]
+}

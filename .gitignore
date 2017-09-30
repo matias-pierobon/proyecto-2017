@@ -1,4 +1,5 @@
 node_modules
-vendors
+vendor
 var
 .vscode
+.idea
