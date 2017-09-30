@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    db:
+        image: mariadb:latest
+        environment:
+          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    web:
+        build:  .
+        volumes:
+          - .:/code
+        ports:
+          - "8000:80"
+        links:
+          - db

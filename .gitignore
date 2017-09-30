@@ -3,3 +3,4 @@ vendor
 var
 .vscode
 .idea
+.env
