@@ -32,6 +32,27 @@ class Response {
     const HTTP_SERVICE_UNAVAILABLE = 503;
     const HTTP_GATEWAY_TIMEOUT = 504;
 
+    public static $statusTexts = array(
+        self::HTTP_OK => 'OK',
+        self::HTTP_CREATED => 'Created',
+        self::HTTP_ACCEPTED => 'Accepted',
+
+        self::HTTP_BAD_REQUEST => 'Bad Request',
+        self::HTTP_UNAUTHORIZED => 'Unauthorized',
+        self::HTTP_FORBIDDEN => 'Forbidden',
+        self::HTTP_NOT_FOUND => 'Not Found',
+        self::HTTP_METHOD_NOT_ALLOWED => 'Method Not Allowed',
+        self::HTTP_REQUEST_TIMEOUT => 'Request Timeout',
+        self::HTTP_UNSUPPORTED_MEDIA_TYPE => 'Unsupported Media Type',
+        self::HTTP_LOCKED => 'Locked',
+
+        self::HTTP_INTERNAL_SERVER_ERROR => 'Internal Server Error',
+        self::HTTP_NOT_IMPLEMENTED => 'Not Implemented',
+        self::HTTP_BAD_GATEWAY => 'Bad Gateway',
+        self::HTTP_SERVICE_UNAVAILABLE => 'Service Unavailable',
+        self::HTTP_GATEWAY_TIMEOUT => 'Gateway Timeout'
+    );
+
     public $headers;
     protected $content;
     protected $version;
@@ -73,23 +94,180 @@ class Response {
         if (headers_sent()) {
             return $this;
         }
+
         // headers
-        foreach ($this->headers->allPreserveCaseWithoutCookies() as $name => $values) {
+        foreach ($this->headers->all() as $name => $values) {
             foreach ($values as $value) {
                 header($name.': '.$value, false, $this->statusCode);
             }
         }
+
         // status
         header(sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText), true, $this->statusCode);
-        // cookies
-        foreach ($this->headers->getCookies() as $cookie) {
-            if ($cookie->isRaw()) {
-                setrawcookie($cookie->getName(), $cookie->getValue(), $cookie->getExpiresTime(), $cookie->getPath(), $cookie->getDomain(), $cookie->isSecure(), $cookie->isHttpOnly());
-            } else {
-                setcookie($cookie->getName(), $cookie->getValue(), $cookie->getExpiresTime(), $cookie->getPath(), $cookie->getDomain(), $cookie->isSecure(), $cookie->isHttpOnly());
-            }
-        }
+
         return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function send()
+    {
+        $this->sendHeaders();
+        $this->sendContent();
+        return $this;
+    }
+
+    /**
+     * @param mixed $content
+     *
+     * @return $this
+     *
+     * @throws \UnexpectedValueException
+     */
+    public function setContent($content)
+    {
+        if (null !== $content && !is_string($content) && !is_numeric($content) && !is_callable(array($content, '__toString'))) {
+            throw new \UnexpectedValueException(sprintf('The Response content must be a string or object implementing __toString(), "%s" given.', gettype($content)));
+        }
+        $this->content = (string) $content;
+        return $this;
+    }
+
+    /**
+     * @return string Content
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $version
+     *
+     * @return $this
+     */
+    public function setProtocolVersion($version)
+    {
+        $this->version = $version;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProtocolVersion()
+    {
+        return $this->version;
+    }
+
+    /**
+     * @param int   $code
+     * @param mixed $text
+     *
+     * @return self
+     *
+     * @throws \InvalidArgumentException When the HTTP status code is not valid
+     */
+    public function setStatusCode($code, $text = null)
+    {
+        $this->statusCode = $code = (int) $code;
+        if ( $this->isInvalid() ) {
+            throw new \InvalidArgumentException(sprintf('The HTTP status code "%s" is not valid.', $code));
+        }
+
+        if (null === $text) {
+            $this->statusText = isset(self::$statusTexts[$code]) ? self::$statusTexts[$code] : 'unknown status';
+            return $this;
+        }
+        if (false === $text) {
+            $this->statusText = '';
+            return $this;
+        }
+
+        $this->statusText = $text;
+        return $this;
+    }
+
+    /**
+     * @return int Status code
+     */
+    public function getStatusCode()
+    {
+        return $this->statusCode;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInvalid()
+    {
+        return $this->statusCode < 100 || $this->statusCode >= 600;
+    }
+    /**
+     * @return bool
+     */
+    public function isInformational()
+    {
+        return $this->statusCode >= 100 && $this->statusCode < 200;
+    }
+    /**
+     * @return bool
+     */
+    public function isSuccessful()
+    {
+        return $this->statusCode >= 200 && $this->statusCode < 300;
+    }
+    /**
+     * @return bool
+     */
+    public function isRedirection()
+    {
+        return $this->statusCode >= 300 && $this->statusCode < 400;
+    }
+    /**
+     * @return bool
+     */
+    public function isClientError()
+    {
+        return $this->statusCode >= 400 && $this->statusCode < 500;
+    }
+    /**
+     * @return bool
+     */
+    public function isServerError()
+    {
+        return $this->statusCode >= 500 && $this->statusCode < 600;
+    }
+    /**
+     * @return bool
+     */
+    public function isOk()
+    {
+        return 200 === $this->statusCode;
+    }
+    /**
+     * @return bool
+     */
+    public function isForbidden()
+    {
+        return 403 === $this->statusCode;
+    }
+    /**
+     * @return bool
+     */
+    public function isNotFound()
+    {
+        return 404 === $this->statusCode;
+    }
+    /**
+     * @param string $location
+     *
+     * @return bool
+     */
+    public function isRedirect($location = null)
+    {
+        return in_array($this->statusCode, array(201, 301, 302, 303, 307, 308)) && (null === $location ?: $location == $this->headers->get('Location'));
     }
 
 }
