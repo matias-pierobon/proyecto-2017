@@ -59,7 +59,7 @@ abstract class Definition extends AbstractDefinition {
         return $this->getParent()->getPattern();
     }
 
-    /* @return AbstractDefinition */
+    /* @return LazyDefinition */
     public function end(){
         return $this->getParent();
     }
