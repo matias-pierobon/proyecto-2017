@@ -1,26 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matias
- * Date: 9/30/17
- * Time: 2:18 PM
- */
+require_once "../vendor/autoload.php";
 
-$s = new SplObjectStorage();
+use Hospital\Application;
+use Melody\Http\Request;
 
-$o1 = new StdClass;
-$o2 = new StdClass;
-$o3 = new StdClass;
+$request = Request::createFromGlobals();
 
-$s->attach($o1);
-$s->attach($o2);
+$app = new Application();
 
-var_dump($s->contains($o1));
-var_dump($s->contains($o2));
-var_dump($s->contains($o3));
+?>
 
-$s->detach($o2);
-
-var_dump($s->contains($o1));
-var_dump($s->contains($o2));
-var_dump($s->contains($o3));
+<pre><code><?php var_dump($request->getPathInfo()) ?></code></pre>
