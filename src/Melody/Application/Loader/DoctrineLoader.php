@@ -28,5 +28,6 @@ class DoctrineLoader extends Loader
 
         $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
         $entityManager = EntityManager::create($dbParams, $config);
+        $container->register('entityManager', $entityManager);
     }
 }
