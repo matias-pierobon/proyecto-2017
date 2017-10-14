@@ -9,6 +9,8 @@
 namespace Melody\Http\Bag;
 
 
+use Melody\Http\File\UploadedFile;
+
 class FileBag extends Bag
 {
     private static $fileKeys = array('error', 'name', 'size', 'tmp_name', 'type');
