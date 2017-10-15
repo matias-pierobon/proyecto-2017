@@ -9,6 +9,8 @@
 namespace Melody\Application\RouterBuilder;
 
 
+use Melody\Router\Router;
+
 class RouterBuilder
 {
     private $definitions;
@@ -25,5 +27,14 @@ class RouterBuilder
     /* @return LazyDefinition */
     public function define($pattern){
         return (new NullDefinition($this))->define($pattern);
+    }
+
+    /* @param Router $router*/
+    public function build($router){
+        /* @var ConcreteDefinition $definition */
+        foreach ($this->definitions as $definition) {
+            $route = $definition->compile();
+            $router->add($route);
+        }
     }
 }
