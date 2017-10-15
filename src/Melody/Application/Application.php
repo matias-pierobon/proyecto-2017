@@ -15,12 +15,15 @@ use Melody\Application\Loader\PathsLoader;
 use Melody\Application\Loader\TwigLoader;
 use Melody\Application\RouterBuilder\RouterBuilder;
 use Melody\Http\Request;
+use Melody\Http\Response;
+use Melody\Router\Router;
 
 abstract class Application  implements ContainerAwareInterface{
 
     use ContainerAwareTrait;
 
-    private $routes;
+    /* @var Router */
+    private $router;
 
     /* @var Kernel */
     protected $kernel;
@@ -33,8 +36,16 @@ abstract class Application  implements ContainerAwareInterface{
         $this->controllers = array();
         $this->kernel = new Kernel($this);
         $this->booted = false;
+        $this->router = new Router();
     }
 
+    /**
+     * @return Router
+     */
+    public function getRouter()
+    {
+        return $this->router;
+    }
 
     /**
      * @param Request $request
@@ -44,14 +55,22 @@ abstract class Application  implements ContainerAwareInterface{
         $this->kernel->handle($request);
     }
 
-    public function registerController($name, $controller){
-        $this->controllers[$name] = $controller;
+    /**
+     * @param \Exception $exception
+     * @param Request $request
+     * @return Response
+     */
+    public function handleException($exception, $request){
+        return new Response($exception->getMessage(), $exception->getCode());
     }
 
-    public function getControllers()
-    {
-        return $this->controllers;
+    public function registerController($name, $controller){
+        $this->controllers[$name] = $controller;
+        $this->container->register("controller." . $name, $controller);
     }
+
+    /* @return array */
+    public abstract function getControllers();
 
     public function getController($name){
         return $this->controllers[$name];
@@ -82,8 +101,8 @@ abstract class Application  implements ContainerAwareInterface{
 
     public function initializeControllers()
     {
-        foreach ($this->getControllers() as $controller) {
-            $controller->setContainer($this->container);
+        foreach ($this->getControllers() as $name => $controller) {
+            $this->registerController($name, $controller);
         }
     }
 
@@ -91,6 +110,8 @@ abstract class Application  implements ContainerAwareInterface{
         $builder = new RouterBuilder();
         $this->registerRoutes($builder);
     }
+
+
 
     /* @param RouterBuilder $builder */
     protected abstract function registerRoutes($builder);
