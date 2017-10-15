@@ -9,7 +9,13 @@
 namespace Melody\Router\Exception;
 
 
+use Melody\Http\Response;
+use Throwable;
+
 class RouteNotFoundException extends RouterException
 {
-
+    public function __construct($message = "", $previous = null)
+    {
+        parent::__construct($message, Response::HTTP_NOT_FOUND, $previous);
+    }
 }

@@ -8,6 +8,7 @@
 
 namespace Hospital;
 
+use Hospital\Controller\ExceptionController;
 use Melody\Application\Application as BaseApplication;
 use Melody\Application\RouterBuilder\RouterBuilder;
 
@@ -19,9 +20,20 @@ class Application extends BaseApplication
         $router->register($builder);
     }
 
+    public  function getControllers()
+    {
+        return array(
+            "Exception" => new ExceptionController()
+        );
+    }
+
+    public function handleException($exception, $request){
+        return $this->getController('Exception')->errorAction($request, $exception);
+    }
+
     public function getRootDir()
     {
-        return __DIR__ . '/../../';
+        return __DIR__ . '/../..';
     }
 
     public function getAppDir()

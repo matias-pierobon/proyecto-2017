@@ -42,9 +42,9 @@ class Kernel {
             $response = $this->handleRaw($request);
         }catch (\Exception $exception){
             $response = $this->handleException($exception, $request);
-        }finally{
-            $response->send();
         }
+
+        $response->send();
     }
 
     /**
@@ -90,6 +90,6 @@ class Kernel {
      * @return Response
      */
     private function handleException($exception, $request){
-        return new Response($exception->getMessage(), $exception->getCode());
+        return $this->application->handleException($exception, $request);
     }
 }
