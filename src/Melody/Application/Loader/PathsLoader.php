@@ -14,11 +14,12 @@ class PathsLoader extends Loader
     public function load($container)
     {
         $container
-            ->setParameter('paths.model', $container->getApp()->getModelDir())
-            ->setParameter('paths.view', $container->getApp()->getModelDir())
-            ->setParameter('paths.cache', $container->getApp()->getCacheDir())
-            ->setParameter('paths.logs', $container->getApp()->getLogDir())
+            ->setParameter('paths.root', $container->getApp()->getRootDir())
             ->setParameter('paths.app', $container->getApp()->getAppDir())
-            ->setParameter('paths.root', $container->getApp()->getRootDir());
+            ->setParameter('paths.model', $container->getApp()->getModelDir())
+            ->setParameter('paths.view', $container->getApp()->getViewDir())
+            ->setParameter('paths.config', $container->getApp()->getConfigDir())
+            ->setParameter('paths.cache', $container->getApp()->getCacheDir())
+            ->setParameter('paths.logs', $container->getApp()->getLogDir());
     }
 }

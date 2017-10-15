@@ -35,6 +35,9 @@ class Request {
     /* @var Bag $query */
     protected $query;
 
+    /* @var Bag $query */
+    protected $parameters;
+
     /* @var ServerBag $server */
     protected $server;
 
@@ -67,6 +70,7 @@ class Request {
     {
         $this->request = new Bag($request);
         $this->query = new Bag($query);
+        $this->parameters = new Bag();
         $this->attributes = new Bag($attributes);
         $this->cookies = new Bag($cookies);
         $this->files = new FileBag($files);
@@ -88,6 +92,22 @@ class Request {
     public function getMethod()
     {
         return strtoupper($this->server->get('REQUEST_METHOD', 'GET'));
+    }
+
+    /**
+     * @param array $parameters
+     */
+    public function setParameters($parameters)
+    {
+        $this->parameters = new Bag($parameters);
+    }
+
+    /**
+     * @return Bag
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
     }
 
     /**

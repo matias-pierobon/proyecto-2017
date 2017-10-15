@@ -28,6 +28,9 @@ class Container {
     public function register($name, $service)
     {
         $this->services[$name] = $service;
+        if ($service instanceof ContainerAwareInterface){
+            $service->setContainer($this);
+        }
         return $this;
     }
 
