@@ -85,6 +85,11 @@ class Request {
         return new self($_GET, $_POST, array(), $_COOKIE, $_FILES, $_SERVER);
     }
 
+    public function getMethod()
+    {
+        return strtoupper($this->server->get('REQUEST_METHOD', 'GET'));
+    }
+
     /**
      * Gets the request's scheme.
      *

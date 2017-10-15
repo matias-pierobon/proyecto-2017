@@ -16,7 +16,7 @@ class DoctrineLoader extends Loader
     public function load($container)
     {
         $paths = array($container->getParameter('paths.model'));
-        $isDevMode = false;
+        $isDevMode = true;
 
         // the connection configuration
         $dbParams = array(
