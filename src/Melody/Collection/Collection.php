@@ -9,6 +9,7 @@
 namespace Melody\Collection;
 
 
-abstract class Collection {
+abstract class Collection implements  \IteratorAggregate, \Countable
+{
 
 }
