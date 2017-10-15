@@ -9,10 +9,12 @@
 namespace Melody\Application;
 
 
+use Melody\Application\Loader\ConfigLoader;
 use Melody\Application\Loader\DoctrineLoader;
 use Melody\Application\Loader\PathsLoader;
 use Melody\Application\Loader\TwigLoader;
 use Melody\Application\RouterBuilder\RouterBuilder;
+use Melody\Http\Request;
 
 abstract class Application  implements ContainerAwareInterface{
 
@@ -20,10 +22,26 @@ abstract class Application  implements ContainerAwareInterface{
 
     private $routes;
 
+    /* @var Kernel */
+    protected $kernel;
+
+    protected $booted;
+
     protected $controllers;
 
     public function __construct(){
         $this->controllers = array();
+        $this->kernel = new Kernel($this);
+        $this->booted = false;
+    }
+
+
+    /**
+     * @param Request $request
+     */
+    public function handle($request){
+        $this->boot();
+        $this->kernel->handle($request);
     }
 
     public function registerController($name, $controller){
@@ -40,14 +58,19 @@ abstract class Application  implements ContainerAwareInterface{
     }
 
     public function boot(){
+        if($this->booted)
+            return;
+
         $this->initializeContainer();
         $this->initializeControllers();
+        $this->booted = true;
     }
 
     public function initializeContainer(){
         $this->container = new Container($this);
         $loaders = array(
             new PathsLoader(),
+            new ConfigLoader(),
             new TwigLoader(),
             new DoctrineLoader()
         );
@@ -86,13 +109,18 @@ abstract class Application  implements ContainerAwareInterface{
         return $this->getRootDir() . '/var/cache';
     }
 
+    public function getConfigDir()
+    {
+        return $this->getRootDir() . '/config';
+    }
+
     public function getViewDir()
     {
-        return $this->getAppDir() . '/view';
+        return $this->getAppDir() . '/View';
     }
 
     public function getModelDir()
     {
-        return $this->getAppDir() . '/model';
+        return $this->getAppDir() . '/Model';
     }
 }
