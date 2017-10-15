@@ -17,7 +17,7 @@ class TwigLoader extends Loader
     {
         $loader = new Twig_Loader_Filesystem($container->getParameter('paths.view'));
         $twig = new Twig_Environment($loader, array(
-            'cache' => $container->getParameter('paths.cache')
+            //'cache' => $container->getParameter('paths.cache')
         ));
 
         $container->register('twig', $twig);
