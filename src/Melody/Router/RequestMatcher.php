@@ -51,7 +51,7 @@ class RequestMatcher
         if(!isset($this->allow[$request->getMethod()])){
             throw new MethodNotAllowedException(
                 array_keys($this->allow),
-                sprintf('Method "%s" not allow for "%s".', array($request->getMethod(), $request->getPathInfo()))
+                sprintf('Method "%s" not allow for "%s".', $request->getMethod(), $request->getPathInfo())
             );
         }
 

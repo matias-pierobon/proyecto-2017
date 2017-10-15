@@ -9,6 +9,8 @@
 namespace Melody\Application\RouterBuilder;
 
 
+use Melody\Router\Route;
+
 class ConcreteDefinition extends Definition
 {
     private $method;
@@ -17,14 +19,31 @@ class ConcreteDefinition extends Definition
     /* @param Definition $parent */
     public function __construct($parent, $action, $method)
     {
-        parent::__construct($parent, $parent->getPattern(), $parent->getController());
+        parent::__construct($parent, '', $parent->getController());
         $this->action = $action;
         $this->method = $method;
         $this->getBuilder()->register($this);
     }
 
+    /* @return Route */
+    public function compile()
+    {
+        return new Route(
+            $this->getRegex(),
+            $this->getMethod(),
+            $this->getController(),
+            $this->getAction()
+        );
+    }
+
+    /* @return string */
+    public function getRegex()
+    {
+        return "/^" . str_replace("/", "\\/", $this->getPattern()) . "$/i";
+    }
+
     public function getMethod(){
-        return $this->method;
+        return strtoupper($this->method);
     }
 
     public function setMethod($method){

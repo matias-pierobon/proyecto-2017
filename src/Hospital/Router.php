@@ -32,7 +32,7 @@ class Router
     public function registerFrontend($definition){
         $definition
             ->setController('Frontend')
-            ->define('/login')
+            ->define('login')
                 ->get('signIn')->end()
                 ->post('login')->end()
             ->end()
@@ -41,6 +41,26 @@ class Router
 
     /* @param LazyDefinition $definition */
     protected function crud($definition, $controller){
+        $definition->setController($controller);
+
+        $root = $definition->define('/');
+        $root->get('index');
+
+        $new = $root->define('new');
+        $new->get('new');
+        $new->post('create');
+
+        $partial = $root->define("(?P<id>\\d+)");
+        $partial->get('show');
+
+        $edit = $partial->define('/edit');
+        $edit->get('edit');
+        $edit->post('update');
+
+        $delete = $partial->define('/delete');
+        $delete->get('delete');
+
+        /*
         $definition
             ->setController($controller)
             ->define('/')
@@ -59,5 +79,6 @@ class Router
                     ->post('create')->end()
                 ->end()
                 ->get('index');
+        */
     }
 }
