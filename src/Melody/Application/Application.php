@@ -66,7 +66,8 @@ abstract class Application  implements ContainerAwareInterface{
 
     public function registerController($name, $controller){
         $this->controllers[$name] = $controller;
-        $this->container->register("controller." . $name, $controller);
+        if($controller instanceof ContainerAwareInterface)
+            $controller->setContainer($this->container);
     }
 
     /* @return array */
@@ -82,7 +83,14 @@ abstract class Application  implements ContainerAwareInterface{
 
         $this->initializeContainer();
         $this->initializeControllers();
+        $this->generateRoutes();
         $this->booted = true;
+    }
+
+    public function dump($var){
+        echo("<pre><code>");
+        var_dump($var);
+        echo("</code></pre>");
     }
 
     public function initializeContainer(){
@@ -109,6 +117,7 @@ abstract class Application  implements ContainerAwareInterface{
     protected function generateRoutes(){
         $builder = new RouterBuilder();
         $this->registerRoutes($builder);
+        $builder->build($this->router);
     }
 
 
