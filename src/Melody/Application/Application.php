@@ -14,12 +14,11 @@ use Melody\Application\Loader\PathsLoader;
 use Melody\Application\Loader\TwigLoader;
 use Melody\Application\RouterBuilder\RouterBuilder;
 
-abstract class Application {
+abstract class Application  implements ContainerAwareInterface{
+
+    use ContainerAwareTrait;
 
     private $routes;
-
-    /* @var Container $container*/
-    protected $container;
 
     protected $controllers;
 
@@ -56,10 +55,6 @@ abstract class Application {
         foreach ($loaders as $loader) {
             $loader->load($this->container);
         }
-    }
-
-    public function getContainer(){
-        return $this->container;
     }
 
     public function initializeControllers()
