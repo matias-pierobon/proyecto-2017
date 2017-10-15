@@ -9,6 +9,7 @@
 namespace Melody\Collection;
 
 use SplObjectStorage;
+use Traversable;
 
 class Set extends Collection
 {
@@ -26,8 +27,26 @@ class Set extends Collection
         return $element;
     }
 
+    public function remove($element)
+    {
+        $this->elements->detach($element);
+        return $element;
+    }
+
     public function contains($element)
     {
         return $this->elements->contains($element);
     }
+
+    public function getIterator()
+    {
+        return $this->elements;
+    }
+
+    public function count()
+    {
+        return $this->elements->count();
+    }
+
+
 }
