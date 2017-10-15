@@ -7,7 +7,4 @@ use Melody\Http\Request;
 $request = Request::createFromGlobals();
 
 $app = new Application();
-
-?>
-
-<pre><code><?php var_dump($request->getPathInfo()) ?></code></pre>
+$app->handle($request);
