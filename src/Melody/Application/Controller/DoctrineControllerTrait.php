@@ -14,8 +14,6 @@ use Doctrine\ORM\EntityRepository;
 
 trait DoctrineControllerTrait
 {
-    use ContainerControllerTrait;
-
     /* @return EntityManager */
     public function getEntityManager()
     {

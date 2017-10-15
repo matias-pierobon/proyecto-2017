@@ -14,7 +14,6 @@ use Melody\Application\ContainerAwareTrait;
 trait ContainerControllerTrait
 {
     use ContainerAwareTrait;
-
     /**
      * @param string $service
      * @return mixed

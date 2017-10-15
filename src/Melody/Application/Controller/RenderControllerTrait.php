@@ -13,8 +13,6 @@ use Twig_Environment;
 
 trait RenderControllerTrait
 {
-    use ContainerControllerTrait;
-
     /**
      * @param string $template
      * @param array $context
