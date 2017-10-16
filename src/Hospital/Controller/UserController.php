@@ -91,7 +91,7 @@ class UserController extends CrudController
 
         $user->setUpdatedAt(new \DateTime());
         $roleRepo = $this->getRepository(Role::class);
-        $roles = new ArrayCollection($request->getRequest()->get('roles', array()));
+        $roles = new ArrayCollection($request->getRequest()->get('rolesId', array()));
 
         /* @var Role $role */
         foreach ($user->getRoles() as $role) {
