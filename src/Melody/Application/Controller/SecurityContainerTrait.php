@@ -13,14 +13,19 @@ use Melody\Application\Exception\AccessDeniedException;
 use Melody\Application\Security\UserInterface;
 use Melody\Http\Request;
 
-trait ContainerSecurityTrait
+trait SecurityContainerTrait
 {
     /**
      * @param $attribute
      * @return bool
      */
     protected function isGranted($attribute){
-        return $this->getUser()->isGranted($attribute);
+        $user = $this->getUser();
+
+        if(!$user)
+            return false;
+
+        return $user->isGranted($attribute);
     }
 
     protected function denyAccessUnlessGranted($attribute, $message = 'Access Denied.')

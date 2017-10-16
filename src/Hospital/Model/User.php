@@ -57,7 +57,7 @@ class User implements UserInterface
     /**
      * One User has One Person.
      * @var Person
-     * @ORM\OneToOne(targetEntity="Person", inversedBy="user")
+     * @ORM\OneToOne(targetEntity="Person", inversedBy="user", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      */
     private $person;
@@ -86,6 +86,31 @@ class User implements UserInterface
         $this->setPassword(password_hash($password, PASSWORD_BCRYPT));
     }
 
+    public function setEmail($email)
+    {
+        $this->getPerson()->setEmail($email);
+    }
+
+    public function setFirstName($firstName)
+    {
+        $this->getPerson()->setFirstName($firstName);
+    }
+
+    public function getFirstName()
+    {
+        return $this->getPerson()->getFirstName();
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->getPerson()->setLastName($lastName);
+    }
+
+    public function getLastName()
+    {
+        return $this->getPerson()->getLastName();
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -97,6 +122,16 @@ class User implements UserInterface
         }
 
         return false;
+    }
+
+    public function getEmail()
+    {
+        return $this->getPerson()->getEmail();
+    }
+
+    public function getFullName()
+    {
+        return $this->getPerson()->getFullName();
     }
 
     /**
@@ -258,6 +293,9 @@ class User implements UserInterface
      */
     public function getPerson()
     {
+        if(!$this->person)
+            $this->setPerson(new Person());
+
         return $this->person;
     }
 

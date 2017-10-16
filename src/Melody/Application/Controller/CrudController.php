@@ -19,6 +19,8 @@ abstract class CrudController extends Controller
     /* @return string */
     public abstract function getEntityName();
 
+    public abstract function createEntity();
+
     /* @return string */
     public function getViewPath(){
         return ucfirst(strtolower($this->getEntityName()));
@@ -53,8 +55,12 @@ abstract class CrudController extends Controller
      */
     public function processRequest($request, $entity){
         foreach ($request->getRequest() as $name => $value) {
-            $selector = "set" . ucfirst($name);
-            $entity->$selector($value);
+            try {
+                $selector = "set" . ucfirst($name);
+                $entity->$selector($value);
+            }catch (\Exception $e){
+                continue;
+            }
         }
     }
 
@@ -112,7 +118,7 @@ abstract class CrudController extends Controller
      * @return Response
      */
     public function createAction($request){
-        $entity = $this->getEntityByRequest($request);
+        $entity = $this->createEntity();
 
         $this->processNewRequest($request, $entity);
 
