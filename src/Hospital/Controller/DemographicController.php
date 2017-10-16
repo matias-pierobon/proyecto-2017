@@ -55,9 +55,9 @@ class DemographicController extends Controller
         $this->denyAccessUnlessGranted('demographic_add');
 
         $demographic = new DemographicData();
-        $demographic->setElectricity($request->getRequest()->get('electricity', 'on') == 'on');
-        $demographic->setRefrigerator($request->getRequest()->get('refrigerator', 'on') == 'on');
-        $demographic->setPet($request->getRequest()->get('pet', 'on') == 'on');
+        $demographic->setElectricity($request->getRequest()->get('electricity', 'off') == 'on');
+        $demographic->setRefrigerator($request->getRequest()->get('refrigerator', 'off') == 'on');
+        $demographic->setPet($request->getRequest()->get('pet', 'on') == 'off');
 
         $waterType = $this->getRepository(WaterType::class)->find($request->getRequest()->get('waterType'));
         $houseType = $this->getRepository(HouseType::class)->find($request->getRequest()->get('houseType'));
@@ -105,9 +105,9 @@ class DemographicController extends Controller
         $this->denyAccessUnlessGranted('demographic_update');
 
         $demographic = $this->getPatient()->getDemographicData();
-        $demographic->setElectricity($request->getRequest()->get('electricity', 'on') == 'on');
-        $demographic->setRefrigerator($request->getRequest()->get('refrigerator', 'on') == 'on');
-        $demographic->setPet($request->getRequest()->get('pet', 'on') == 'on');
+        $demographic->setElectricity($request->getRequest()->get('electricity', 'off') == 'on');
+        $demographic->setRefrigerator($request->getRequest()->get('refrigerator', 'off') == 'on');
+        $demographic->setPet($request->getRequest()->get('pet', 'on') == 'off');
 
         $waterType = $this->getRepository(WaterType::class)->find($request->getRequest()->get('waterType'));
         $houseType = $this->getRepository(HouseType::class)->find($request->getRequest()->get('houseType'));
