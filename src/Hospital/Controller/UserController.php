@@ -87,7 +87,7 @@ class UserController extends CrudController
         $user->setFirstName($request->getRequest()->get('firstName', $user->getFirstName()));
         $user->setLastName($request->getRequest()->get('lastName', $user->getLastName()));
 
-        $user->setEnabled($request->getRequest()->get('enabled', 'ON') == 'ON');
+        $user->setEnabled($request->getRequest()->get('enabled', 'off') == 'on');
 
         $user->setUpdatedAt(new \DateTime());
         $roleRepo = $this->getRepository(Role::class);
