@@ -37,9 +37,9 @@
     </form>
 
 
-    <a href="/admin/patient/?page={{ prev }}" class="btn primary" {% if not prev %}disabled{% endif %}>Anterior</a>
+    <a href="/admin/patient/?page={{ prev }}" class="btn primary" {% if prev > 0%}disabled{% endif %}>Anterior</a>
     Págin {{ page }} / {{ pages }}
-    <a href="/admin/patient/?page={{ next }}" class="btn primary" {% if not next %}disabled{% endif %}>Siguitente</a>
+    <a href="/admin/patient/?page={{ next }}" class="btn primary" {% if next <= pages %}disabled{% endif %}>Siguitente</a>
     
     <br>
     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
