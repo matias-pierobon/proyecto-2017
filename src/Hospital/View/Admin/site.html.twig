@@ -24,10 +24,10 @@
                 <input name="maxElements" class="full-width" type="number" placeholder="Elementos Máximos" value="{{ site.maxElements }}" required />
             </div>
             <div class="form-group">
-                <div class="checkbox lg">
-                    <input type="checkbox" id="inputCheckbox" name="enabled" {% if site.enabled %}checked{% endif %}>
-                    <label for="enabled">Frontend Activo</label>
-                </div>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="enabled">
+                    <input name="enabled" type="checkbox" id="enabled" class="mdl-checkbox__input" {% if site.enabled %}checked{% endif %}>
+                    <span class="mdl-checkbox__label">Frontend Activo</span>
+                </label>
             </div>
         </div>
         <div class="mdl-card__actions mdl-card--border">
