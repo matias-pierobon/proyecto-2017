@@ -42,6 +42,11 @@ abstract class CrudController extends Controller
         return $this->getEntityRepository()->find($id);
     }
 
+    protected function redirectTo($uri){
+        $url = $this->getRoutePrefix() . '/' . $uri;
+        return $this->redirect($url);
+    }
+
     /**
      * @param Request $request
      * @param $entity
@@ -115,7 +120,7 @@ abstract class CrudController extends Controller
         $em->persist($entity);
         $em->flush();
 
-        return $this->showAction($request);
+        return $this->redirectTo('/' . $entity->getId());
     }
 
     /**
@@ -151,7 +156,8 @@ abstract class CrudController extends Controller
     public function updateAction($request){
         $entity = $this->getEntityByRequest($request);
         $this->processEditRequest($request, $entity);
-        return $this->showAction($request);
+
+        return $this->redirectTo('/' . $entity->getId());
     }
 
     /**
@@ -164,7 +170,7 @@ abstract class CrudController extends Controller
         $em->remove($entity);
         $em->flush();
 
-        return $this->indexAction($request);
+        return $this->redirectTo('/');
     }
 
     public function twigEntityVar()
