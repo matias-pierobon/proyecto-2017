@@ -50,7 +50,7 @@ class Session implements \IteratorAggregate, \Countable {
         /* @var AttributeBag $bag*/
         foreach ($bags as $bag) {
             $key = $bag->getName();
-            $session[$key] = $session[$key] ?: array();
+            $session[$key] = (isset($session[$key]) && $session[$key])  ? $session[$key] : array();
             $bag->initialize($session[$key]);
         }
         $this->started = true;
