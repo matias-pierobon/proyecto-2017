@@ -32,7 +32,7 @@
 
                 <label for="birthDate">Tipo de Vivienda:</label>
                 <div class="form-group">
-                    <select name="insurance" class="full-width">
+                    <select name="houseType" class="full-width">
                         {% for type in houseTypes %}
                             <option value="{{ type.id }}"
                                     {% if data.houseType.id == type.id %}
@@ -45,7 +45,7 @@
 
                 <label for="birthDate">Tipo de Calefacción:</label>
                 <div class="form-group">
-                    <select name="insurance" class="full-width">
+                    <select name="heatingType" class="full-width">
                         {% for type in heatingTypes %}
                             <option value="{{ type.id }}"
                                     {% if data.heatingType.id == type.id %}
@@ -58,7 +58,7 @@
 
                 <label for="birthDate">Tipo de Agua:</label>
                 <div class="form-group">
-                    <select name="insurance" class="full-width">
+                    <select name="waterType" class="full-width">
                         {% for type in waterTypes %}
                             <option value="{{ type.id }}"
                                     {% if data.waterType.id == type.id %}
