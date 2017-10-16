@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Site
  * @package Hospital\Model
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Hospital\Repository\SiteRepository")
  * @ORM\Table(name="site")
  */
 class Site
