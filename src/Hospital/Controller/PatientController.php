@@ -21,6 +21,32 @@ use Melody\Http\Request;
 class PatientController extends CrudController
 {
 
+    public function processRequest($request, $entity)
+    {
+        /* @var Patient $patient*/
+        $patient = $entity;
+
+        $patient->setLastName($request->getRequest()->get('lastName'));
+        $patient->setFirstName($request->getRequest()->get('firstName'));
+        $patient->setEmail($request->getRequest()->get('email'));
+        $patient->setAddress($request->getRequest()->get('addresses'));
+        $patient->setBirthDate(new \DateTime($request->getRequest()->get('birthDate')));
+        $patient->setDni($request->getRequest()->get('dni'));
+        $patient->setPhone($request->getRequest()->get('phone'));
+        $patient->setSex($request->getRequest()->get('sex', '0') == '1');
+
+        $dniType = $request->getRequest()->get('dniType');
+        $dniType = $this->getRepository(DniType::class)->find($dniType);
+        $patient->setDniType($dniType);
+
+        $insurance = $request->getRequest()->get('insurance', '-1');
+        if($insurance != '-1') {
+            $insurance = $this->getRepository(MedicalInsurance::class)->find($dniType);
+            $patient->setMedicalInsurance($dniType);
+        }
+
+    }
+
     public function indexAction($request)
     {
         $this->denyAccessUnlessGranted('patients_index');
