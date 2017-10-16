@@ -37,7 +37,7 @@ class FrontendController extends Controller
         $em = $this->getEntityManager();
         $repo = $em->getRepository(User::class);
         /* @var User $user */
-        $user = $repo->findBy(array('username' => $username));
+        $user = $repo->findOneBy(array('username' => $username));
 
         if(!$user)
             return $this->render('Frontend/login.html.twig', array(
