@@ -96,6 +96,11 @@ class Patient
         return $this->getPerson()->getFullName();
     }
 
+    public function getSexText()
+    {
+        return $this->sex ? 'Masculino' : 'Femenino';
+    }
+
     public function setEmail($email)
     {
         $this->getPerson()->setEmail($email);
