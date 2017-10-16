@@ -12,17 +12,21 @@
                 <h2 class="brand-text font-size-18">Hospital Gutiérrez</h2>
             </a>
 
+            {% if error is defined %}
+                <span>{{ error }}</span>
+            {% endif %}
+
             <form method="post" action="/login">
                 <div class="form-group">
                     <div class="input-affix">
-                        <i class="prefix material-icons">mail</i>
-                        <input class="full-width" type="mail" placeholder="Correo electrónico" value="" required/>
+                        <i class="prefix material-icons">person</i>
+                        <input name="username" class="full-width" type="text" placeholder="Nombre de Usuario" value="" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-affix">
                         <i class="prefix material-icons">lock</i>
-                        <input class="full-width" type="password" placeholder="Contraseña" value="" required/>
+                        <input name="password" class="full-width" type="password" placeholder="Contraseña" value="" required/>
                     </div>
                 </div>
 
