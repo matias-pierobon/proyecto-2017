@@ -11,7 +11,7 @@ namespace Melody\Application\Loader;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-class DoctrineLoader extends Loader
+class DoctrineLoader implements Loader
 {
     public function load($container)
     {
@@ -24,9 +24,10 @@ class DoctrineLoader extends Loader
             'user'     => $container->getParameter('db.user'),
             'password' => $container->getParameter('db.password'),
             'dbname'   => $container->getParameter('db.database'),
+            'host' => $container->getParameter('db.host')
         );
 
-        $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+        $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, null, null, false);
         $entityManager = EntityManager::create($dbParams, $config);
         $container->register('entityManager', $entityManager);
     }

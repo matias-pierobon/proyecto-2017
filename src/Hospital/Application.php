@@ -8,8 +8,10 @@
 
 namespace Hospital;
 
+use Hospital\Controller\AdminController;
 use Hospital\Controller\ExceptionController;
 use Hospital\Controller\FrontendController;
+use Hospital\Twig\TwigApp;
 use Melody\Application\Application as BaseApplication;
 use Melody\Application\RouterBuilder\RouterBuilder;
 
@@ -21,11 +23,19 @@ class Application extends BaseApplication
         $router->register($builder);
     }
 
+    public function postBoot(){
+        /* @var \Twig_Environment $twig */
+        $twig = $this->getContainer()->get('twig');
+
+        $twig->addGlobal('app', new TwigApp($this->getContainer()));
+    }
+
     public  function getControllers()
     {
         return array(
             "Exception" => new ExceptionController(),
-            "Frontend" => new FrontendController()
+            "Frontend" => new FrontendController(),
+            "Admin" => new AdminController()
         );
     }
 

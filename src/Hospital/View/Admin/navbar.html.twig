@@ -1,0 +1,54 @@
+<nav class="navbar fixed">
+    <header class="nav-group">
+        <div class="container-fluid">
+            <i class="d-sm-none d-xs-flex hamburger" id="menu">
+                <span class="bar"></span>
+            </i>
+            <a class="brand" href="/admin">
+                <img src="/www/img/logo.svg" height="36px" alt="Hospital Guitiérrez" />
+                <span class="d-none d-lg-flex ">Hospital Guitiérrez</span>
+            </a>
+            <i class="d-sm-none d-xs-flex material-icons" id="tools">more_horiz</i>
+        </div>
+    </header>
+    <div class="nav-group">
+        <div class="container-fluid">
+            <form action="/" method="GET" class="inline">
+                <div class="input-affix">
+                    <i class="suffix material-icons">search</i>
+                    <input type="text" placeholder="Buscar" id="search" name="search" alt="Buscar en la web" value="">
+                </div>
+            </form>
+            <ul class="navitems">
+                <li><a href="#">John Doe</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="scrim"></div>
+<aside class="sidebar fixed">
+    <ul class="sidemenu">
+        <li class="category">General</li>
+        <li class="active"><a href="/admin" alt="Dashboard">
+                <i class="material-icons">dashboard</i> <span>Dashboard</span>
+            </a></li>
+        <li><a href="/admin/patients/" alt="Pacientes">
+                <i class="material-icons">contacts</i> <span>Pacientes</span>
+            </a></li>
+        <li><a href="#" alt="Turnos">
+                <i class="material-icons">schedule</i> <span>Turnos</span>
+            </a></li>
+        <li class="category">Administración</li>
+        <li><a href="/admin/user/" alt="Usuarios">
+                <i class="material-icons">people</i> <span>Usuarios</span>
+            </a></li>
+        <li><a href="/admin/permission/" alt="Permisos">
+                <i class="material-icons">security</i> <span>Permisos</span>
+            </a></li>
+    </ul>
+    <footer>
+        <a href="#" class="d-flex d-sm-none d-lg-flex"><i class="material-icons">settings</i></a>
+        <a href="/"><i class="material-icons">home</i></a>
+        <a href="/login" class="d-flex d-sm-none d-lg-flex"><i class="material-icons">power_settings_new</i></a>
+    </footer>
+</aside>

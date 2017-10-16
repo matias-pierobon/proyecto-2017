@@ -1,0 +1,74 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: matias
+ * Date: 10/16/17
+ * Time: 12:21 AM
+ */
+
+namespace Hospital\Model;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="demographic_data")
+ */
+class DemographicData
+{
+    /**
+     * @var int
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
+    private $id;
+
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $refrigerator;
+
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $electricity;
+
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pet;
+
+    /**
+     * Many DemographicData have One HouseType.
+     * @var HouseType|null
+     * @ORM\ManyToOne(targetEntity="HouseType")
+     * @ORM\JoinColumn(name="house_type_id", referencedColumnName="id")
+     */
+    private $houseType;
+
+    /**
+     * Many DemographicData have One WaterType.
+     * @var WaterType|null
+     * @ORM\ManyToOne(targetEntity="WaterType")
+     * @ORM\JoinColumn(name="water_type_id", referencedColumnName="id")
+     */
+    private $waterType;
+
+    /**
+     * Many DemographicData have One HeatingType.
+     * @var HeatingType|null
+     * @ORM\ManyToOne(targetEntity="HeatingType")
+     * @ORM\JoinColumn(name="heating_type_id", referencedColumnName="id")
+     */
+    private $heatingType;
+
+    /**
+     * One DemographicData has Many Patients.
+     * @var Patient[]
+     * @ORM\OneToMany(targetEntity="Patient", mappedBy="demographicData")
+     */
+    private $patients;
+}

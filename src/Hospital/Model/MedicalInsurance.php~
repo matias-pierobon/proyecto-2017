@@ -1,0 +1,38 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: matias
+ * Date: 10/16/17
+ * Time: 12:17 AM
+ */
+
+namespace Hospital\Model;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="medical_insurances")
+ */
+class MedicalInsurance
+{
+    /**
+     * @var int
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=140, unique=true)
+     */
+    private $name;
+
+    /**
+     * One MedicalInsurance has Many Patients.
+     * @var Patient[]
+     * @ORM\OneToMany(targetEntity="Patient", mappedBy="medicalInsurance")
+     */
+    private $patients;
+}

@@ -11,7 +11,7 @@ namespace Melody\Application\Loader;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 
-class TwigLoader extends Loader
+class TwigLoader implements Loader
 {
     public  function load($container)
     {

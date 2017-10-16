@@ -1,0 +1,44 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: matias
+ * Date: 10/16/17
+ * Time: 12:04 AM
+ */
+
+namespace Hospital\Model;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="roles")
+ */
+class Role {
+    /**
+     * @var int
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=140, unique=true)
+     */
+    private $name;
+
+    /**
+     * Many Roles have Many Permissions.
+     * @var Permission[]
+     * @ORM\ManyToMany(targetEntity="Permission", mappedBy="roles")
+     */
+    private $permissions;
+
+    /**
+     * Many Roles have Many Users.
+     * @var User[]
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="roles")
+     */
+    private $users;
+}

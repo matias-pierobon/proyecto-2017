@@ -9,6 +9,7 @@
 namespace Melody\Application;
 
 
+use Melody\Application\Loader\ServiceLoader;
 use RuntimeException;
 use Melody\Application\Loader\ConfigLoader;
 use Melody\Application\Loader\DoctrineLoader;
@@ -53,6 +54,7 @@ abstract class Application  implements ContainerAwareInterface{
      */
     public function handle($request){
         $this->boot();
+        $this->container->register('request', $request);
         $this->kernel->handle($request);
     }
 
@@ -87,6 +89,7 @@ abstract class Application  implements ContainerAwareInterface{
         $this->initializeContainer();
         $this->initializeControllers();
         $this->generateRoutes();
+        $this->postBoot();
         $this->booted = true;
     }
 
@@ -102,7 +105,8 @@ abstract class Application  implements ContainerAwareInterface{
             new PathsLoader(),
             new ConfigLoader(),
             new TwigLoader(),
-            new DoctrineLoader()
+            new DoctrineLoader(),
+            new ServiceLoader()
         );
 
         foreach ($loaders as $loader) {
@@ -117,12 +121,15 @@ abstract class Application  implements ContainerAwareInterface{
         }
     }
 
+    public function getServices(){ return array(); }
+
     protected function generateRoutes(){
         $builder = new RouterBuilder();
         $this->registerRoutes($builder);
         $builder->build($this->router);
     }
 
+    public function postBoot(){}
 
 
     /* @param RouterBuilder $builder */

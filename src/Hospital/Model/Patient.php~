@@ -1,0 +1,86 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: matias
+ * Date: 10/16/17
+ * Time: 12:08 AM
+ */
+
+namespace Hospital\Model;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="patients")
+ */
+class Patient
+{
+    /**
+     * @var int
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=140)
+     */
+    private $phone;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="date")
+     */
+    private $birthDate;
+
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $sex;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer", unique=true)
+     */
+    private $dni;
+
+    /**
+     * Many Patients have One DNI Type.
+     * DniType
+     * @ORM\ManyToOne(targetEntity="DniType", inversedBy="patients")
+     * @ORM\JoinColumn(name="dni_type_id", referencedColumnName="id")
+     */
+    private $dniType;
+
+    /**
+     * Many Patients have One Medical Insurance.
+     * @var MedicalInsurance|null
+     * @ORM\ManyToOne(targetEntity="MedicalInsurance", inversedBy="patients")
+     * @ORM\JoinColumn(name="insurance_id", referencedColumnName="id")
+     */
+    private $medicalInsurance;
+
+    /**
+     * Many Patients have One Demographic Data.
+     * @var DemographicData|null
+     * @ORM\ManyToOne(targetEntity="DemographicData", inversedBy="patients")
+     * @ORM\JoinColumn(name="demographic_id", referencedColumnName="id")
+     */
+    private $demographicData;
+
+    /**
+     * One Patient has One Person.
+     * @ORM\OneToOne(targetEntity="Person")
+     * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     */
+    private $person;
+}

@@ -3,6 +3,7 @@
     "db.driver": "pdo_mysql",
     "db.user": "grupo35",
     "db.password": "MzQ2YTVmNzdkNDg5",
-    "db.database": "grupo35"
+    "db.database": "grupo35",
+    "db.host": "0.0.0.0"
   }
 }

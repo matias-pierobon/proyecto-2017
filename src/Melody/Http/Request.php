@@ -13,6 +13,7 @@ use Melody\Http\Bag\Bag;
 use Melody\Http\Bag\FileBag;
 use Melody\Http\Bag\HeaderBag;
 use Melody\Http\Bag\ServerBag;
+use Melody\Http\Session\Session;
 
 class Request {
 
@@ -55,6 +56,7 @@ class Request {
      */
     protected $content;
 
+    /* @var Session */
     protected $session;
 
     /**
@@ -77,6 +79,7 @@ class Request {
         $this->server = new ServerBag($server);
         $this->headers = new HeaderBag($this->server->getHeaders());
         $this->content = $content;
+        $this->session = new Session();
     }
 
     /**
@@ -218,7 +221,7 @@ class Request {
     }
 
     /**
-     * @return mixed
+     * @return Session
      */
     public function getSession()
     {

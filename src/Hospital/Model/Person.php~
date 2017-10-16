@@ -1,0 +1,50 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: matias
+ * Date: 10/16/17
+ * Time: 12:03 AM
+ */
+
+namespace Hospital\Model;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="people")
+ */
+class Person
+{
+    /**
+     * @var int
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @ORM\Column(name="first_name", type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     * @ORM\Column(name="last_name", type="string", length=255)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * One Person has One User.
+     * @var User
+     * @ORM\OneToOne(targetEntity="User", mappedBy="person")
+     */
+    private $user;
+}

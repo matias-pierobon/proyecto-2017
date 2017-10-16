@@ -9,7 +9,7 @@
 namespace Melody\Application\Loader;
 
 
-class PathsLoader extends Loader
+class PathsLoader implements Loader
 {
     public function load($container)
     {
