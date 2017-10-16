@@ -73,7 +73,7 @@ class User implements UserInterface
 
     public function isEnabled()
     {
-        return $this->enabled;
+        return $this->enabled == true;
     }
 
     public function __toString()
