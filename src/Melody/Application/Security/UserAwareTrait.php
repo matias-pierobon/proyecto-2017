@@ -9,6 +9,8 @@
 namespace Melody\Application\Security;
 
 
+use Hospital\Model\User;
+
 trait UserAwareTrait
 {
     /* @return UserInterface|null */
@@ -18,7 +20,7 @@ trait UserAwareTrait
         $request = $this->getRequest();
         $user = $request->getSession()->get('user');
 
-        if (!is_object($user)) {
+        if (!($user instanceof UserInterface)) {
             return null;
         }
 
@@ -27,6 +29,9 @@ trait UserAwareTrait
             /* @var User $user */
             $user = $repo->find($user->getId());
         }
+
+        if(!$user->isEnabled())
+            return null;
 
         return $user;
     }

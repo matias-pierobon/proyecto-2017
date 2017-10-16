@@ -15,6 +15,7 @@ use Hospital\Model\MedicalInsurance;
 use Hospital\Model\Patient;
 use Hospital\Model\Role;
 use Hospital\Model\User;
+use Hospital\Service\PaginationService;
 use Melody\Application\Controller\CrudController;
 use Melody\Http\Request;
 
@@ -50,7 +51,24 @@ class PatientController extends CrudController
     public function indexAction($request)
     {
         $this->denyAccessUnlessGranted('patients_index');
-        return parent::indexAction($request);
+        $entities = new ArrayCollection($this->getAllEntities($request));
+        $dnyTypes = $this->getRepository(DniType::class)->findAll();
+
+        /* @var PaginationService $paginationService*/
+        $paginationService = $this->get('pagination');
+
+        $pagination = $paginationService->paginate($entities, $request);
+
+        return $this->render(
+            $this->getViewFor('index'),
+            array(
+                "entities" => $pagination['entities'],
+                "first" => $pagination['first'],
+                "page" => $pagination['page'],
+                "pages" => $pagination['pages'],
+                "dnyTypes" => $dnyTypes
+            )
+        );
     }
 
     public function newAction($request)

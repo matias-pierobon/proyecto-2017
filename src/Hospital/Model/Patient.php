@@ -10,7 +10,7 @@ namespace Hospital\Model;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Hospital\Repository\PatientRepository")
  * @ORM\Table(name="patients")
  */
 class Patient

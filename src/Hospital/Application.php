@@ -14,6 +14,7 @@ use Hospital\Controller\FrontendController;
 use Hospital\Controller\PatientController;
 use Hospital\Controller\UserController;
 use Hospital\Model\Patient;
+use Hospital\Service\PaginationService;
 use Hospital\Twig\TwigApp;
 use Melody\Application\Application as BaseApplication;
 use Melody\Application\RouterBuilder\RouterBuilder;
@@ -41,6 +42,13 @@ class Application extends BaseApplication
             "Admin" => new AdminController(),
             "User" => new UserController(),
             "Patient" => new PatientController()
+        );
+    }
+
+    public function getServices()
+    {
+        return array(
+            'pagination' => new PaginationService()
         );
     }
 

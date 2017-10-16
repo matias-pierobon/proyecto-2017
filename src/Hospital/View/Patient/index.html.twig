@@ -2,9 +2,51 @@
 
 {% block content %}
 
-    <h1>Usuarios</h1>
+    <h1>Pasientes</h1>
     <a href="/admin/patient/new" class="btn primary">Crear</a>
-    <br>
+
+    <form action="/admin/patient/" method="get">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Buscar</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <div class="form-group">
+                <div class="input-affix">
+                    <i class="prefix material-icons">person</i>
+                    <input name="firstName" class="full-width" type="text" placeholder="Nombre" value="" />
+                </div>
+                <div class="input-affix">
+                    <i class="prefix material-icons">person</i>
+                    <input name="lastName" class="full-width" type="text" placeholder="Apellido" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-affix">
+                    <i class="prefix material-icons">person</i>
+                    <input name="dni" class="full-width" type="text" placeholder="DNI" value="" />
+                </div>
+                <select name="dniType" class="full-width">
+                    <option value="-1" selected>Sin Filtro</option>
+                    {% for dniType in dniTypes %}
+                        <option value="{{ dniType.id }}">{{ dniType }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Get Started
+            </button>
+        </div>
+    </div>
+    </form>
+
+
+    <a href="/admin/patient/?page={{ prev }}" class="btn primary" {% if not prev %}disabled{% endif %}>Anterior</a>
+
+    <a href="/admin/patient/?page={{ next }}" class="btn primary" {% if not next %}disabled{% endif %}>Siguitente</a>
+
     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <thead>
         <tr>

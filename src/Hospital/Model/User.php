@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Melody\Application\Security\UserInterface;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Hospital\Repository\UserRepository")
  * @ORM\Table(name="users")
  */
 class User implements UserInterface

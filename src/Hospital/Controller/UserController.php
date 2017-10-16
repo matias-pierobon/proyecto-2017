@@ -12,6 +12,7 @@ namespace Hospital\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
 use Hospital\Model\Role;
 use Hospital\Model\User;
+use Hospital\Service\PaginationService;
 use Melody\Application\Controller\CrudController;
 use Melody\Http\Request;
 
@@ -32,7 +33,24 @@ class UserController extends CrudController
     public function indexAction($request)
     {
         $this->denyAccessUnlessGranted('users_index');
-        return parent::indexAction($request);
+        $entities = new ArrayCollection($this->getAllEntities($request));
+
+        /* @var PaginationService $paginationService*/
+        $paginationService = $this->get('pagination');
+
+        $pagination = $paginationService->paginate($entities, $request);
+
+        return $this->render(
+            $this->getViewFor('index'),
+            array(
+                "entities" => $pagination['entities'],
+                "first" => $pagination['first'],
+                "next" => $pagination['next'],
+                "prev" => $pagination['prev'],
+                "page" => $pagination['page'],
+                "pages" => $pagination['pages'],
+            )
+        );
     }
 
     public function newAction($request)

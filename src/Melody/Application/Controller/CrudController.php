@@ -88,9 +88,15 @@ abstract class CrudController extends Controller
         return $this->getEntityById($request->getParameters()->get('id'));
     }
 
-    /* @return array */
-    public function getAllEntities(){
-        return $this->getEntityRepository()->findAll();
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function getAllEntities($request=null){
+        if(!$request)
+            return $this->getEntityRepository()->findAll();
+        else
+            return $this->getEntityRepository()->findByRequest($request);
     }
 
     /**

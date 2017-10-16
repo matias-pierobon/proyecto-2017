@@ -9,8 +9,10 @@
 namespace Hospital\Controller;
 
 
+use Hospital\Model\Site;
 use Hospital\Model\User;
 use Melody\Application\Controller\Controller;
+use Melody\Application\Exception\HttpException;
 use Melody\Http\Request;
 use Melody\Http\Response;
 
@@ -18,6 +20,12 @@ class FrontendController extends Controller
 {
     public function indexAction($request)
     {
+        /* @var Site $site */
+        $site = $this->getRepository(Site::class)->getSite();
+
+        if(!$site->isEnabled())
+            throw new HttpException(200, "Sitio en mantenimiento");
+
         return $this->render('Frontend/index.html.twig');
     }
 
