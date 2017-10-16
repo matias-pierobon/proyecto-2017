@@ -9,6 +9,7 @@
 namespace Melody\Application\Controller;
 
 
+use Hospital\Model\User;
 use Melody\Application\Exception\AccessDeniedException;
 use Melody\Application\Security\UserInterface;
 use Melody\Http\Request;
@@ -49,6 +50,12 @@ trait SecurityContainerTrait
 
         if (!is_object($user)) {
             return null;
+        }
+
+        if ($user instanceof User) {
+            $repo = $this->getEntityManager()->getRepository(User::class);
+            /* @var User $user */
+            $user = $repo->find($user->getId());
         }
 
         return $user;
