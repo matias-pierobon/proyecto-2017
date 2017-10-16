@@ -9,6 +9,7 @@
 namespace Melody\Application;
 
 
+use RuntimeException;
 use Melody\Application\Loader\ConfigLoader;
 use Melody\Application\Loader\DoctrineLoader;
 use Melody\Application\Loader\PathsLoader;
@@ -74,6 +75,8 @@ abstract class Application  implements ContainerAwareInterface{
     public abstract function getControllers();
 
     public function getController($name){
+        if (!isset($this->controllers[$name]))
+            throw new RuntimeException(sprintf('No controller named "%s"', $name));
         return $this->controllers[$name];
     }
 

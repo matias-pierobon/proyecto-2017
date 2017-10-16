@@ -1,59 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "base.html.twig" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="theme-color" content="#62a8ea" />
-    <meta name="author" content="Matías Pierobón Marcos" />
-    <meta name="keywords" content="Hospital Ricardo Gutiérrez" />
-    <meta name="description" content="Plataforma web para el Hospital Gutiérrez" />
-    <meta name="robots" content="index,follow" />
-    <meta property="og:url" content="https://grupo35.proyecto2017.linti.unlp.edu.ar/" />
-    <meta property="og:title" content="Hospital Dr. Ricardo Gutiérrez" />
-    <meta property="og:site_name" content="Hospital Gutiérrez" />
-    <meta property="og:description" content="Plataforma web para el Hospital Gutiérrez" />
-    <meta property="og:image" content="https://grupo35.proyecto2017.linti.unlp.edu.ar/mockups/img/icon.png" />
+{% block stylesheets %}
+    <link rel="stylesheet" href="/www/css/home.css" />
+{% endblock %}
 
-    <title>Hospital Gutiérrez</title>
-
-    <link rel="manifest" href="../www/manifest.json" />
-    <link rel="shortcut icon" href="../www/favicon.ico" />
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../www/css/main.css" />
-    <link rel="stylesheet" href="../www/css/home.css" />
-</head>
-
-<body>
+{% block body %}
     <header>
-        <nav class="navbar fixed">
-            <div class="container">
-
-                <a class="brand" href="./index.html">
-                    <img src="../www/img/logo.svg" height="36px" alt="Hospital Guitiérrez" />
-                    <span>Hospital Guitiérrez</span>
-                </a>
-                <div class="nav-group">
-                    <form action="./index.html" method="GET" class="inline">
-                        <div class="input-affix">
-                            <i class="suffix material-icons">search</i>
-                            <input type="text" placeholder="Buscar" id="search" name="search" alt="Buscar en la web" value="">
-                        </div>
-                    </form>
-                    <ul class="navitems">
-                        <li><a href="./login.html">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        {% include "Frontend/navbar.html.twig" %}
     </header>
     <section class="bg-section full-section" id="video">
         <div class="background pattern">
             <video preload="auto" autoplay loop muted>
-                <source src="../www/img/intro.mp4" type="video/mp4" />
+                <source src="/www/img/intro.mp4" type="video/mp4" />
             </video>
         </div>
         <div class="container">
@@ -132,15 +90,5 @@
         <p>Hospital Dr. Ricardo Gutiérrez </p>
         <p>Proyecto de Software © 2017.</p>
     </footer>
-    <!--<section>
-        <div class="container">
-            <div class="row">
-                <div class="col sm-6 md-4 lg-3">hola</div>
-                <div class="col sm-6 md-4 lg-3">ahola</div>
-                <div class="col sm-6 md-4 lg-3">hola</div>
-            </div>
-        </div>
-    </section>  -->
-</body>
+{% endblock %}
 
-</html>
