@@ -33,7 +33,7 @@
                 <label for="birthDate">Tipo de Vivienda:</label>
                 <div class="form-group">
                     <select name="insurance" class="full-width">
-                        {% for type in hoseTypes %}
+                        {% for type in houseTypes %}
                             <option value="{{ type.id }}"
                                     {% if data.houseType.id == type.id %}
                                         selected
@@ -46,7 +46,7 @@
                 <label for="birthDate">Tipo de Calefacción:</label>
                 <div class="form-group">
                     <select name="insurance" class="full-width">
-                        {% for type in heatingType %}
+                        {% for type in heatingTypes %}
                             <option value="{{ type.id }}"
                                     {% if data.heatingType.id == type.id %}
                                         selected
