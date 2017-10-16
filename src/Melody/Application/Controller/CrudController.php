@@ -162,7 +162,7 @@ abstract class CrudController extends Controller
     public function updateAction($request){
         $entity = $this->getEntityByRequest($request);
         $this->processEditRequest($request, $entity);
-
+        $this->getEntityManager()->flush();
         return $this->redirectTo('/' . $entity->getId());
     }
 
