@@ -13,7 +13,7 @@
                 </div>
             </form>
             <ul class="navitems">
-                <li><a href="/login">Login</a></li>
+                <li>{% if app.user %}<a href="/admin">{{ app.user }}</a>{% else %}<a href="/login">Login</a>{% endif %}</li>
             </ul>
         </div>
     </div>
