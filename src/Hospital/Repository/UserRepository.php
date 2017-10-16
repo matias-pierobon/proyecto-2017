@@ -24,13 +24,13 @@ class UserRepository extends EntityRepository
 
         if(trim($username = $request->getQuery()->get('username', '')) != ''){
             $qb->andWhere(
-                $qb->expr()->like('username', "%" . $username . "%")
+                $qb->expr()->like('u.username', "%" . $username . "%")
             );
         }
 
         if(($enabled = $request->getQuery()->get('enabled', -1)) != -1){
             $qb->andWhere(
-                $qb->expr()->eq('enabled', $enabled == 1)
+                $qb->expr()->eq('u.enabled', $enabled == 1)
             );
         }
 

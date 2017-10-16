@@ -20,29 +20,29 @@ class PatientRepository extends EntityRepository
      */
     public function findByRequest($request)
     {
-        $qb = $this->createQueryBuilder('u');
+        $qb = $this->createQueryBuilder('p');
 
         if(trim($firstName = $request->getQuery()->get('firstName', '')) != ''){
             $qb->andWhere(
-                $qb->expr()->like('firstName', "%" . $firstName . "%")
+                $qb->expr()->like('p.firstName', "%" . $firstName . "%")
             );
         }
 
         if(trim($lastName = $request->getQuery()->get('lastName', '')) != ''){
             $qb->andWhere(
-                $qb->expr()->like('lastName', "%" . $lastName . "%")
+                $qb->expr()->like('p.lastName', "%" . $lastName . "%")
             );
         }
 
         if(trim($dni = $request->getQuery()->get('dni', '')) != ''){
             $qb->andWhere(
-                $qb->expr()->eq('dni', $dni)
+                $qb->expr()->eq('p.dni', $dni)
             );
         }
 
         if(($dniType = $request->getQuery()->get('dniType', -1)) != -1){
             $qb->andWhere(
-                $qb->expr()->eq('dniType', $dniType)
+                $qb->expr()->eq('p.dniType', $dniType)
             );
         }
 
