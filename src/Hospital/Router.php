@@ -22,9 +22,13 @@ class Router
 
     /* @param LazyDefinition $definition */
     public function registerAdmin($definition){
-        $definition
-            ->get('index')
-            ->setController('Admin');
+        $definition->setController('Admin');
+
+        $definition->get('index');
+        $definition->define('/config')
+            ->get('editSie')->end()
+            ->post('updateSite')->end();
+
         $this->crud($definition->define('/user'), 'User');
         $this->crud($definition->define('/patient'), 'Patient');
     }
