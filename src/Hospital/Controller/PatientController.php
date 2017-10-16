@@ -29,7 +29,7 @@ class PatientController extends CrudController
         $patient->setLastName($request->getRequest()->get('lastName'));
         $patient->setFirstName($request->getRequest()->get('firstName'));
         $patient->setEmail($request->getRequest()->get('email'));
-        $patient->setAddress($request->getRequest()->get('addresses'));
+        $patient->setAddress($request->getRequest()->get('address'));
         $patient->setBirthDate(new \DateTime($request->getRequest()->get('birthDate')));
         $patient->setDni($request->getRequest()->get('dni'));
         $patient->setPhone($request->getRequest()->get('phone'));
@@ -42,7 +42,7 @@ class PatientController extends CrudController
         $insurance = $request->getRequest()->get('insurance', '-1');
         if($insurance != '-1') {
             $insurance = $this->getRepository(MedicalInsurance::class)->find($dniType);
-            $patient->setMedicalInsurance($dniType);
+            $patient->setMedicalInsurance($insurance);
         }
 
     }
