@@ -20,7 +20,7 @@
                 </div>
                 <label for="birthDate">Nacimiento:</label>
                 <div class="form-group">
-                    <input name="birthDate" class="full-width" type="date" value="{{ patient.birthdate | date("yyyy-mm-dd") }}" required/>
+                    <input name="birthDate" class="full-width" type="date" value="{{ patient.birthdate | date("Y-m-d") }}" required/>
                 </div>
                 <div class="form-group">
                     <input name="phone" class="full-width" type="text" placeholder="Teléfono" value="{{ patient.phone }}" />
