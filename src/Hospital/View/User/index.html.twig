@@ -11,6 +11,7 @@
             <th class="mdl-data-table__cell--non-numeric">Nombre de Usuario</th>
             <th class="mdl-data-table__cell--non-numeric">Email</th>
             <th class="mdl-data-table__cell--non-numeric">Nombre Completo</th>
+            <th class="mdl-data-table__cell--non-numeric">Estado</th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
             <td class="mdl-data-table__cell--non-numeric">{{ user.username }}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ user.email }}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ user.fullName }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{% if user.enabled %}activo{% else %}bloqueado{% endif %}</td>
         </tr>
         {% endfor %}
         </tbody>
