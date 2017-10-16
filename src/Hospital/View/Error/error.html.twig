@@ -1,2 +1,24 @@
-<h1>Error {{ exception.code }}</h1>
-<h2>{{ exception.message }}</h2>
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/www/css/login.css" />
+{% endblock %}
+
+{% block body %}
+
+    <section class="login text-center">
+
+        <a href="/" class="brand">
+            <img class="brand-img" src="/www/img/logo.svg" height="36px" alt="Hospital" />
+            <h2 class="brand-text font-size-18">Hospital Gutiérrez</h2>
+        </a>
+
+
+        <h3>Error {{ exception.code }}</h3>
+        <h4>{{ exception.message }}</h4>
+    </section>
+    <footer class="text-center">
+        <p>Hospital Dr. Ricardo Gutiérrez </p>
+        <p>Proyecto de Software © 2017.</p>
+    </footer>
+{% endblock %}

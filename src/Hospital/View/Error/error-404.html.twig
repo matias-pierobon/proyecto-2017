@@ -1,2 +1,23 @@
-<h1>Error 404</h1>
-<h2>La pagina "{{ request.pathInfo }}" que esta intentando solicitar no se encuentra disponible</h2>
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/www/css/login.css" />
+{% endblock %}
+
+{% block body %}
+
+    <section class="login text-center">
+
+        <a href="/" class="brand">
+            <img class="brand-img" src="/www/img/logo.svg" height="36px" alt="Hospital" />
+            <h2 class="brand-text font-size-18">Hospital Gutiérrez</h2>
+        </a>
+
+        <h3>Ups!!</h3>
+        <h4>La pagina "{{ request.pathInfo }}" que esta intentando solicitar no se encuentra disponible</h4>
+    </section>
+    <footer class="text-center">
+        <p>Hospital Dr. Ricardo Gutiérrez </p>
+        <p>Proyecto de Software © 2017.</p>
+    </footer>
+{% endblock %}
