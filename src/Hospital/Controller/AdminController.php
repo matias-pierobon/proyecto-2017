@@ -45,7 +45,7 @@ class AdminController extends Controller
         $site->setDescription($request->getRequest()->get('description', $site->getDescription()));
         $site->setMaxElements($request->getRequest()->get('maxElements', $site->getMaxElements()));
 
-        $enabled = $request->getRequest()->get('maxElements', 'on') == 'on';
+        $enabled = $request->getRequest()->get('enabled', 'on') == 'on';
         $site->setEnabled($enabled);
 
         $this->getEntityManager()->flush();
