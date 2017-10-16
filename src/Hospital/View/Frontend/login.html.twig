@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/www/css/login.css" />
+{% endblock %}
+
+{% block body %}
+        <section class="login text-center">
+
+            <a href="/" class="brand">
+                <img class="brand-img" src="/www/img/logo.svg" height="36px" alt="Hospital" />
+                <h2 class="brand-text font-size-18">Hospital Gutiérrez</h2>
+            </a>
+
+            <form method="post" action="/login">
+                <div class="form-group">
+                    <div class="input-affix">
+                        <i class="prefix material-icons">mail</i>
+                        <input class="full-width" type="mail" placeholder="Correo electrónico" value="" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-affix">
+                        <i class="prefix material-icons">lock</i>
+                        <input class="full-width" type="password" placeholder="Contraseña" value="" required/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox lg">
+                        <input type="checkbox" id="inputCheckbox" name="remember">
+                        <label for="inputCheckbox">Remember me</label>
+                    </div>
+                    <a href="forgot-password.html">Olvidaste la contraseña?</a>
+                </div>
+                <button type="submit" class="btn primary block lg">Ingresar</button>
+            </form>
+            <p>Todavía no tenés cuenta? <a href="signup.html">Registrate!</a></p>
+        </section>
+        <footer class="text-center">
+            <p>Hospital Dr. Ricardo Gutiérrez </p>
+            <p>Proyecto de Software © 2017.</p>
+        </footer>
+    </div>
+{% endblock %}
