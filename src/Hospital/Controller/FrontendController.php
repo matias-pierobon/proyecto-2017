@@ -51,6 +51,12 @@ class FrontendController extends Controller
                 'username' => $username)
             );
 
+        if(!$user->isEnabled())
+            return $this->render('Frontend/login.html.twig', array(
+                    'error' => 'Usuario deshabilitado',
+                    'username' => '')
+            );
+
         $request->getSession()->set('user', $user);
 
         return $this->redirect('/admin');

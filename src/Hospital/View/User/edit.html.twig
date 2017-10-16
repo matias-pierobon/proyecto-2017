@@ -1,0 +1,40 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block content %}
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Modificar Usuario</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <form action="/admin/user/{{ user.id }}/edit" method="post">
+                <div class="form-group">
+                    <div class="input-affix">
+                        <i class="prefix material-icons">mail</i>
+                        <input name="email" class="full-width" type="email" placeholder="Correo electrónico" value="" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input name="firstName" class="full-width" type="text" placeholder="Nombre" value="" required/>
+                    <input name="lastName" class="full-width" type="text" placeholder="Apellido" value="" required/>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox lg">
+                        <input type="checkbox" id="inputCheckbox" name="enabled">
+                        <label for="inputCheckbox">Habilitado</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rolesID">Roles:</label>
+                    <select name="rolesId[]" multiple>
+                        {% for role in roles %}
+                            <option value="{{ role.id }}">{{ role }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn primary" type="submit">modificar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

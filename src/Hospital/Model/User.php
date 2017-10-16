@@ -140,6 +140,8 @@ class User implements UserInterface
     public function __construct()
     {
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enabled = true;
+        $this->createdAt = new \DateTime();
     }
 
     /**

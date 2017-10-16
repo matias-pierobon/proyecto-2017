@@ -39,6 +39,9 @@ class Router
                 ->get('signIn')->end()
                 ->post('login')->end()
             ->end()
+            ->define('logout')
+                ->get('logout')->end()
+            ->end()
             ->get('index');
     }
 
