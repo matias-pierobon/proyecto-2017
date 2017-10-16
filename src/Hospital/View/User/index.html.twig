@@ -17,7 +17,7 @@
         <tbody>
         {% for user in entities %}
         <tr>
-            <td class="mdl-data-table__cell--non-numeric">{{ user.username }}</td>
+            <td class="mdl-data-table__cell--non-numeric"><a href="/admin/user/{{ user.id }}">{{ user.username }}</a></td>
             <td class="mdl-data-table__cell--non-numeric">{{ user.email }}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ user.fullName }}</td>
             <td class="mdl-data-table__cell--non-numeric">{% if user.enabled %}activo{% else %}bloqueado{% endif %}</td>
