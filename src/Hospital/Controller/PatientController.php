@@ -68,7 +68,7 @@ class PatientController extends CrudController
                 "pages" => $pagination['pages'],
                 "next" => $pagination['next'],
                 "prev" => $pagination['prev'],
-                "dnyTypes" => $dnyTypes
+                "dniTypes" => $dnyTypes
             )
         );
     }
