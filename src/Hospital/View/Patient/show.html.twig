@@ -16,7 +16,7 @@
             <p>Mail: {{ entity.email }}</p>
             <p>Dirección: {{ entity.address }}</p>
             <p>Teléfono: {{ entity.phone | default("-") }}</p>
-            <p>Nacimiento: {{ entity.birthDate }}</p>
+            <p>Nacimiento: {{ entity.birthDate | date ("dd/mm/yyyy")}}</p>
             <p>Sexo: {{ entity.sexText }}</p>
             <p>DNI: ({{ entity.dniType }}) {{ entity.dni }}</p>
             <p>Obra Social: {{ entity.medicalInsurance | default("-") }}</p>
