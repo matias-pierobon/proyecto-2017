@@ -51,7 +51,7 @@
         <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Nombre</th>
-            <th class="mdl-data-table__cell--non-numeric">Direccion</th>
+            <th class="mdl-data-table__cell--non-numeric">Email</th>
             <th class="mdl-data-table__cell--non-numeric">Telefono</th>
             <th class="mdl-data-table__cell--non-numeric">Documento</th>
         </tr>
@@ -61,7 +61,6 @@
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><a href="/admin/patient/{{ patient.id }}">{{ patient }}</a></td>
             <td class="mdl-data-table__cell--non-numeric">{{ patient.email }}</td>
-            <td class="mdl-data-table__cell--non-numeric">{{ patient.address }}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ patient.phone }}</td>
             <td class="mdl-data-table__cell--non-numeric">({{ patient.dniType }}) {{ patient.dni }}</td>
         </tr>
