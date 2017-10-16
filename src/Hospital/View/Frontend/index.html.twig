@@ -1,0 +1,94 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/www/css/home.css" />
+{% endblock %}
+
+{% block body %}
+    <header>
+        {% include "Frontend/navbar.html.twig" %}
+    </header>
+    <section class="bg-section full-section" id="video">
+        <div class="background pattern">
+            <video preload="auto" autoplay loop muted>
+                <source src="/www/img/intro.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col md-8 lg-7 xl-6">
+                    <div class="caption solid">
+                        <h2>Lo importante sos vos!!</h2>
+                        <p>Con una respetable trayectoria a lo largo de los años, el hospital cuenta con diversos profesionales
+                            especializados en las distintas aréas de salud</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="techs">
+        <div class="container">
+
+            <div class="row tech-list">
+                <div class="col md-6 lg-3 item">
+                    <i class="material-icons">local_hospital</i>
+                    <h3>Hospital</h3>
+                    <p>Prácticas intensivas supervisadas en ámbitos profesionales y de primer nivel en el país</p>
+                </div>
+                <div class="col md-6 lg-3 item">
+                    <i class="material-icons">security</i>
+                    <h3>Guardia</h3>
+                    <p>Guardias médicas las 24hs para los varios niveles de seriedad y patologías</p>
+                </div>
+                <div class="col md-6 lg-3 item">
+                    <i class="material-icons">error_outline</i>
+                    <h3>Urgencias</h3>
+                    <p>Antención programada y de urgenica para las distintas ramas de la medicina moderna</p>
+                </div>
+                <div class="col md-6 lg-3 item">
+                    <i class="material-icons">schedule</i>
+                    <h3>Turnos Online</h3>
+                    <p>Solicitá tu turno en nuestro sistema web para una mejor experiencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="quote">
+        <div class="container">
+            <div class="row">
+                <div class="col md-2 xl-3"></div>
+                <div class="col md-8 xl-6">
+                    <div class="quote-box">
+                        <i class="material-icons md-48">format_quote</i>
+                        <blockquote>
+                            Los progresos de la medicina y de la bioingeniería podrán considerarse verdaderos logros para la humanidad cuando todas las
+                            personas tengan acceso a sus beneficios y dejen de ser un privilegio para las minorías
+                        </blockquote>
+                        <div class="from">René Favaloro</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contacts">
+        <div class="container">
+            <div class="row tech-list">
+                <div class="col sm-6 item">
+                    <i class="material-icons">phone</i>
+                    <h3>+54 221 598-8554</h3>
+                </div>
+                <div class="col sm-6">
+                    <a href="mailto:contacto@hospitalgutierrez.com.ar" class="item">
+                        <i class="material-icons">mail</i>
+                        <h3>contacto@<span class="d-none d-lg-inline">hospitalgutierrez.com.ar</span></h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>Hospital Dr. Ricardo Gutiérrez </p>
+        <p>Proyecto de Software © 2017.</p>
+    </footer>
+{% endblock %}
+
