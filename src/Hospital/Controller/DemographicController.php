@@ -34,6 +34,8 @@ class DemographicController extends Controller
      */
     public function newAction($request)
     {
+        $this->denyAccessUnlessGranted('demographic_add');
+
         $patient = $this->getPatient();
         $data = $this->getData();
         return $this->render('DemographicData/new.html.twig', array(
@@ -50,6 +52,8 @@ class DemographicController extends Controller
      */
     public function createAction($request)
     {
+        $this->denyAccessUnlessGranted('demographic_add');
+
         $demographic = new DemographicData();
         $demographic->setElectricity($request->getRequest()->get('electricity', 'on') == 'on');
         $demographic->setRefrigerator($request->getRequest()->get('refrigerator', 'on') == 'on');
@@ -78,6 +82,8 @@ class DemographicController extends Controller
      */
     public function editAction($request)
     {
+        $this->denyAccessUnlessGranted('demographic_update');
+
         $patient = $this->getPatient();
         $data = $this->getData();
 
@@ -96,6 +102,8 @@ class DemographicController extends Controller
      */
     public function updateAction($request)
     {
+        $this->denyAccessUnlessGranted('demographic_update');
+
         $demographic = $this->getPatient()->getDemographicData();
         $demographic->setElectricity($request->getRequest()->get('electricity', 'on') == 'on');
         $demographic->setRefrigerator($request->getRequest()->get('refrigerator', 'on') == 'on');
