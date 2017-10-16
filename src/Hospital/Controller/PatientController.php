@@ -81,13 +81,15 @@ class PatientController extends CrudController
     public function editAction($request)
     {
         $this->denyAccessUnlessGranted('patients_update');
-        $user = $this->getEntityByRequest($request);
-        $roles = $this->getRepository(Role::class)->findAll();
+        $patient = $this->getEntityByRequest($request);
+        $dnyTypes = $this->getRepository(DniType::class)->findAll();
+        $insurances = $this->getRepository(MedicalInsurance::class)->findAll();
 
-        return $this->render(
-            $this->getViewFor('edit'),
-            array('user' => $user, 'roles' => $roles)
-        );
+        return $this->render($this->getViewFor('edit'), array(
+            'patient' => $patient,
+            'dniTypes' => $dnyTypes,
+            'insurances' => $insurances
+        ));
     }
 
     public function updateAction($request)
