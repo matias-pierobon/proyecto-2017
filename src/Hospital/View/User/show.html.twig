@@ -1,0 +1,41 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block content %}
+
+    <h1>{{ entity.fullName }}</h1>
+
+    <a href="/admin/user/{{ entity.id }}/edit" class="btn primary"> Editar </a>
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Datos</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <p>Nombre de usuario: {{ entity.username }}</p>
+            <p>Nombre: {{ entity.firstName }}</p>
+            <p>Apellido: {{ entity.lastName }}</p>
+            <p>Mail: {{ entity.email }}</p>
+        </div>
+    </div>
+
+    <h3>Roles:</h3>
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Nombre del Rol</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for role in entity.roles %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">{{ role }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">Usuario sin Roles</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

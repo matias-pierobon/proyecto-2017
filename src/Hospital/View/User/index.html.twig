@@ -1,0 +1,27 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block content %}
+
+    <h1>Usuarios</h1>
+    <a href="/admin/user/new" class="btn primary">Crear</a>
+    <br>
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Nombre de Usuario</th>
+            <th class="mdl-data-table__cell--non-numeric">Email</th>
+            <th class="mdl-data-table__cell--non-numeric">Nombre Completo</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in entities %}
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.username }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.email }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ user.fullName }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

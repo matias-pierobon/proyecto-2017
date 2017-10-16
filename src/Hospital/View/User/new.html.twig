@@ -1,0 +1,38 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block content %}
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Crear Usuario</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <form action="/www/index.php/admin/user/new" method="post">
+                <div class="form-group">
+                    <div class="input-affix">
+                        <i class="prefix material-icons">mail</i>
+                        <input name="email" class="full-width" type="email" placeholder="Correo electrónico" value="" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-affix">
+                        <i class="prefix material-icons">person</i>
+                        <input name="username" class="full-width" type="text" placeholder="Nombre de Usuario" value="" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-affix">
+                        <i class="prefix material-icons">lock</i>
+                        <input name="rawPassword" class="full-width" type="password" placeholder="Contraseña" value="" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input name="firstName" class="full-width" type="text" placeholder="Nombre" value="" required/>
+                    <input name="lastName" class="full-width" type="text" placeholder="Apellido" value="" required/>
+                </div>
+                <button class="btn primary" type="submit">Crear</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

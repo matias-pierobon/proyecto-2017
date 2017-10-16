@@ -14,7 +14,7 @@ use Melody\Http\RedirectResponse;
 
 abstract class Controller implements DoctrineControllerInterface, RenderControllerInterface
 {
-    use ContainerControllerTrait, DoctrineControllerTrait, RenderControllerTrait;
+    use ContainerControllerTrait, DoctrineControllerTrait, RenderControllerTrait, SecurityContainerTrait;
 
     protected function redirect($url, $status = 302)
     {

@@ -17,7 +17,7 @@ services:
           - "8000:80"
         links:
           - db
-    web:
+    phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:
           - "8200:80"

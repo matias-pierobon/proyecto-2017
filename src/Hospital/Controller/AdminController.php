@@ -15,6 +15,7 @@ class AdminController extends Controller
 {
     public function indexAction($request)
     {
+        $this->denyAccessUnlessGranted('admin_dashboard');
         return $this->render('Admin/index.html.twig');
     }
 }
