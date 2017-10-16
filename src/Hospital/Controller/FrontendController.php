@@ -44,10 +44,6 @@ class FrontendController extends Controller
                 'error' => 'Usuario no encontrado',
                 'username' => $username
             ));
-
-        $this->container->getApp()->dump($user->getPassword());
-        $this->container->getApp()->dump($password);
-        $this->container->getApp()->dump(password_verify($password, $user->getPassword()));
         
         if(false == password_verify($password, $user->getPassword()))
             return $this->render('Frontend/login.html.twig', array(
