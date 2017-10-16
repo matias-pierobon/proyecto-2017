@@ -24,25 +24,25 @@ class PatientRepository extends EntityRepository
 
         if(trim($firstName = $request->getQuery()->get('firstName', '')) != ''){
             $qb->andWhere(
-                $qb->expr()->like('p.firstName', "%" . $firstName . "%")
+                $qb->expr()->like('p.firstName', $qb->expr()->literal('%' . $firstName . '%'))
             );
         }
 
         if(trim($lastName = $request->getQuery()->get('lastName', '')) != ''){
             $qb->andWhere(
-                $qb->expr()->like('p.lastName', "%" . $lastName . "%")
+                $qb->expr()->like('p.lastName', $qb->expr()->literal('%' . $lastName . '%'))
             );
         }
 
         if(trim($dni = $request->getQuery()->get('dni', '')) != ''){
             $qb->andWhere(
-                $qb->expr()->eq('p.dni', $dni)
+                $qb->expr()->eq('p.dni', $qb->expr()->literal($dni))
             );
         }
 
         if(($dniType = $request->getQuery()->get('dniType', -1)) != -1){
             $qb->andWhere(
-                $qb->expr()->eq('p.dniType', $dniType)
+                $qb->expr()->eq('p.dniType', $qb->expr()->literal($dniType))
             );
         }
 
