@@ -26,8 +26,6 @@ class Router
             ->get('index')
             ->setController('Admin');
         $this->crud($definition->define('/user'), 'User');
-        $this->crud($definition->define('/role'), 'Role');
-        $this->crud($definition->define('/permission'), 'Permission');
         $this->crud($definition->define('/patient'), 'Patient');
     }
 

@@ -31,7 +31,7 @@ class Patient
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=140)
+     * @ORM\Column(type="string", length=140, nullable=true)
      */
     private $phone;
 
@@ -80,7 +80,7 @@ class Patient
     /**
      * One Patient has One Person.
      * @var Person
-     * @ORM\OneToOne(targetEntity="Person")
+     * @ORM\OneToOne(targetEntity="Person", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      */
     private $person;
@@ -95,6 +95,37 @@ class Patient
     {
         return $this->getPerson()->getFullName();
     }
+
+    public function setEmail($email)
+    {
+        $this->getPerson()->setEmail($email);
+    }
+
+    public function getEmail()
+    {
+        return $this->getPerson()->getEmail();
+    }
+
+    public function setFirstName($firstName)
+    {
+        $this->getPerson()->setFirstName($firstName);
+    }
+
+    public function getFirstName()
+    {
+        return $this->getPerson()->getFirstName();
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->getPerson()->setLastName($lastName);
+    }
+
+    public function getLastName()
+    {
+        return $this->getPerson()->getLastName();
+    }
+
     /**
      * Get id
      *
@@ -318,6 +349,9 @@ class Patient
      */
     public function getPerson()
     {
+        if(!$this->person)
+            $this->setPerson(new Person());
+
         return $this->person;
     }
 }

@@ -1,0 +1,59 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block content %}
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Crear Usuario</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <form action="/admin/patient/new" method="post">
+                <div class="form-group">
+                    <div class="input-affix">
+                        <i class="prefix material-icons">mail</i>
+                        <input name="email" class="full-width" type="email" placeholder="Correo electrónico" value="" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input name="firstName" class="full-width" type="text" placeholder="Nombre" value="" required/>
+                    <input name="lastName" class="full-width" type="text" placeholder="Apellido" value="" required/>
+                </div>
+                <label for="birthDate">Nacimiento:</label>
+                <div class="form-group">
+                    <input name="birthDate" class="full-width" type="date" value="" required/>
+                </div>
+                <div class="form-group">
+                    <input name="phone" class="full-width" type="text" placeholder="Teléfono" value="" />
+                </div>
+                <label for="birthDate">Sexo:</label>
+                <div class="form-group">
+                    <select name="sex" class="full-width">
+                        <option value="0">Femenino</option>
+                        <option value="1">Masculino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input name="dni" class="full-width" type="text" placeholder="DNI" value="" />
+                    <select name="dniType" class="full-width">
+                        {% for dniType in dniTypes %}
+                            <option value="{{ dniType.id }}">{{ dniType }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <label for="birthDate">Obra Social:</label>
+                <div class="form-group">
+                    <select name="sex" class="full-width">
+                        <option value="-1" selected>Seleccione una obra social</option>
+                        {% for insurance in insurances %}
+                            <option value="{{ insurance.id }}">{{ insurance }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+                <button class="btn primary" type="submit">Crear</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

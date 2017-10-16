@@ -1,0 +1,26 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block content %}
+
+    <h1>{{ entity }}</h1>
+
+    <a href="/admin/patient/{{ entity.id }}/edit" class="btn primary"> Editar </a>
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Datos</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <p>Nombre: {{ entity.firstName }}</p>
+            <p>Apellido: {{ entity.lastName }}</p>
+            <p>Mail: {{ entity.email }}</p>
+            <p>Dirección: {{ entity.address }}</p>
+            <p>Teléfono: {{ entity.phone | default("-") }}</p>
+            <p>Nacimiento: {{ entity.birthDate }}</p>
+            <p>Sexo: {{ entity.sexText }}</p>
+            <p>DNI: ({{ entity.dniType }}) {{ entity.dni }}</p>
+            <p>Obra Social: {{ entity.medicalInsurance | default("-") }}</p>
+        </div>
+    </div>
+{% endblock %}
+

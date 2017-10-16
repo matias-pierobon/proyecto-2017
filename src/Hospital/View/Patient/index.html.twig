@@ -1,0 +1,28 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block content %}
+
+    <h1>Usuarios</h1>
+    <a href="/admin/patient/new" class="btn primary">Crear</a>
+    <br>
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Nombre</th>
+            <th class="mdl-data-table__cell--non-numeric">Direccion</th>
+            <th class="mdl-data-table__cell--non-numeric">Telefono</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for patient in entities %}
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><a href="/admin/patient/{{ patient.id }}">{{ patient }}</a></td>
+            <td class="mdl-data-table__cell--non-numeric">{{ patient.email }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ patient.address }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ phone }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
