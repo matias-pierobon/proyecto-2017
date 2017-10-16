@@ -1,0 +1,65 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block content %}
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Crear Datos demograficos</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <form action="/admin/patient/{{ patient.id }}/demographic/add" method="post">
+
+                <div class="form-group">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="refrigerator">
+                        <input name="refrigerator" type="checkbox" id="refrigerator" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">Tiene Heladera</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="electricity">
+                        <input name="electricity" type="checkbox" id="electricity" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">Tiene Electricidad</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="pet">
+                        <input name="pet" type="checkbox" id="pet" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">Tiene Mascota(s)</span>
+                    </label>
+                </div>
+
+                <label for="birthDate">Tipo de Vivienda:</label>
+                <div class="form-group">
+                    <select name="insurance" class="full-width">
+                        {% for type in hoseTypes %}
+                            <option value="{{ type.id }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <label for="birthDate">Tipo de Calefacción:</label>
+                <div class="form-group">
+                    <select name="insurance" class="full-width">
+                        {% for type in heatingType %}
+                            <option value="{{ type.id }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <label for="birthDate">Tipo de Agua:</label>
+                <div class="form-group">
+                    <select name="insurance" class="full-width">
+                        {% for type in waterTypes %}
+                            <option value="{{ type.id }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button class="btn primary" type="submit">Modificar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

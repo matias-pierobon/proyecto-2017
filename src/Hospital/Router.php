@@ -31,6 +31,16 @@ class Router
 
         $this->crud($definition->define('/user'), 'User');
         $this->crud($definition->define('/patient'), 'Patient');
+        $definition->define('/patient/(?P<id>\\d+)/demographic')
+            ->setController('Demographic')
+            ->define('/add')
+                ->get('new')->end()
+                ->post('create')->end()
+            ->end()
+            ->define('/edit')
+                ->get('edit')->end()
+                ->post('update')->end()
+            ->end();
     }
 
     /* @param LazyDefinition $definition */

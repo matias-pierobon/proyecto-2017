@@ -9,6 +9,7 @@
 namespace Hospital;
 
 use Hospital\Controller\AdminController;
+use Hospital\Controller\DemographicController;
 use Hospital\Controller\ExceptionController;
 use Hospital\Controller\FrontendController;
 use Hospital\Controller\PatientController;
@@ -41,7 +42,8 @@ class Application extends BaseApplication
             "Frontend" => new FrontendController(),
             "Admin" => new AdminController(),
             "User" => new UserController(),
-            "Patient" => new PatientController()
+            "Patient" => new PatientController(),
+            "Demographic" => new DemographicController()
         );
     }
 

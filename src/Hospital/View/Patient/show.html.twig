@@ -22,5 +22,30 @@
             <p>Obra Social: {{ entity.medicalInsurance | default("-") }}</p>
         </div>
     </div>
+
+    {% if entity.demographicData %}
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Datos Demográficos</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <p>Nombre: {{ entity.firstName }}</p>
+                <p>Heladera: {% if entity.demographicData.refrigerator %}Si{% else %}No{% endif %}</p>
+                <p>Electricidad: {% if entity.demographicData.electricity %}Si{% else %}No{% endif %}</p>
+                <p>Mascota(s): {% if entity.demographicData.pet %}Si{% else %}No{% endif %}</p>
+
+                <p>Tipo de vivienda: {{ entity.demographicData.houseType }}</p>
+                <p>Tipo de calefacción: {{ entity.demographicData.heatingType }}</p>
+                <p>Tipo de agua: {{ entity.demographicData.waterType }}</p>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="/admin/patient/{{ entity.id }}/demographic/edit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Modificar Datos
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <a href="/admin/patient/{{ entity.id }}/demographic/add" class="btn primary"> Agregar datos demográficos </a>
+    {% endif %}
 {% endblock %}
 
