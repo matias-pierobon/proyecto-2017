@@ -9,7 +9,9 @@
 namespace Hospital\Repository;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
+use Hospital\Model\Patient;
 use Melody\Http\Request;
 
 class PatientRepository extends EntityRepository
@@ -21,18 +23,6 @@ class PatientRepository extends EntityRepository
     public function findByRequest($request)
     {
         $qb = $this->createQueryBuilder('p');
-
-        if(trim($firstName = $request->getQuery()->get('firstName', '')) != ''){
-            $qb->andWhere(
-                $qb->expr()->like('p.firstName', $qb->expr()->literal('%' . $firstName . '%'))
-            );
-        }
-
-        if(trim($lastName = $request->getQuery()->get('lastName', '')) != ''){
-            $qb->andWhere(
-                $qb->expr()->like('p.lastName', $qb->expr()->literal('%' . $lastName . '%'))
-            );
-        }
 
         if(trim($dni = $request->getQuery()->get('dni', '')) != ''){
             $qb->andWhere(
@@ -46,6 +36,20 @@ class PatientRepository extends EntityRepository
             );
         }
 
-        return $qb->getQuery()->getResult();
+        $results = new ArrayCollection($qb->getQuery()->getResult());
+        /* @var Patient $result */
+        foreach ($results as $result) {
+            if(trim($firstName = $request->getQuery()->get('firstName', '')) != ''){
+                if (strpos($result->getFirstName(), $firstName) === false)
+                    $results->removeElement($result);
+            }
+            if(trim($lastName = $request->getQuery()->get('lastName', '')) != ''){
+                if (strpos($result->getLastName(), $lastName) === false)
+                    $results->removeElement($result);
+            }
+        }
+
+        return $results->toArray();
+
     }
 }
