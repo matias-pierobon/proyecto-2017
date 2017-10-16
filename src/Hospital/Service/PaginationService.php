@@ -28,9 +28,9 @@ class PaginationService implements ContainerAwareInterface
      */
     public function paginate($entities, $request, $orders = array())
     {
-        $maxElements = $this->getMaxElements();
+        $maxElements = (int) $this->getMaxElements();
         $page = (int) $request->getQuery()->get('page', 1);
-        $pages = ceil($entities->count() / $page);
+        $pages = ceil($entities->count() / $maxElements);
         $first = $maxElements * ($page-1);
 
         $criteria = Criteria::create()
