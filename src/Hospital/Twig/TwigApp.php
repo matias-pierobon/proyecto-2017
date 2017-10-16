@@ -11,10 +11,12 @@ namespace Hospital\Twig;
 
 use Hospital\Application;
 use Melody\Application\ContainerAwareTrait;
+use Melody\Application\Security\UserAwareTrait;
+use Melody\Http\Request;
 
 class TwigApp
 {
-    use ContainerAwareTrait;
+    use ContainerAwareTrait, UserAwareTrait;
 
     public function __construct($container){
         $this->container = $container;
@@ -24,5 +26,15 @@ class TwigApp
     public function getApplication()
     {
         return $this->container->getApp();
+    }
+
+    /* @return Request */
+    public function getRequest()
+    {
+        return $this->container->get('request');
+    }
+
+    protected function getEntityManager(){
+        return $this->container->get('entityManager');
     }
 }

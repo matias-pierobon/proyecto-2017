@@ -11,11 +11,13 @@ namespace Melody\Application\Controller;
 
 use Hospital\Model\User;
 use Melody\Application\Exception\AccessDeniedException;
+use Melody\Application\Security\UserAwareTrait;
 use Melody\Application\Security\UserInterface;
 use Melody\Http\Request;
 
 trait SecurityContainerTrait
 {
+    use UserAwareTrait;
     /**
      * @param $attribute
      * @return bool

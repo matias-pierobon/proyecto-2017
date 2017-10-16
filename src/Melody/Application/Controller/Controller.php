@@ -11,6 +11,7 @@ namespace Melody\Application\Controller;
 
 use Melody\Application\Exception\NotFoundException;
 use Melody\Http\RedirectResponse;
+use Melody\Http\Request;
 
 abstract class Controller implements DoctrineControllerInterface, RenderControllerInterface
 {
@@ -24,5 +25,10 @@ abstract class Controller implements DoctrineControllerInterface, RenderControll
     protected function createNotFoundException($message = 'Not Found', \Exception $previous = null)
     {
         return new NotFoundException($message, $previous);
+    }
+
+    /* @return Request */
+    protected function getRequest(){
+        return $this->get('request');
     }
 }
