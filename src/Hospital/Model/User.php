@@ -310,6 +310,9 @@ class User implements UserInterface
      */
     public function addRole(\Hospital\Model\Role $role)
     {
+        if($this->roles->contains($role))
+            return $this;
+
         $this->roles[] = $role;
 
         return $this;

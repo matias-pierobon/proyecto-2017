@@ -95,7 +95,7 @@ class UserController extends CrudController
 
         /* @var Role $role */
         foreach ($user->getRoles() as $role) {
-            if(!$roles->contains($role->getId()))
+            if(!$roles->contains((string) $role->getId()))
                 $user->removeRole($role);
         }
 
