@@ -9,6 +9,7 @@
 namespace Hospital;
 
 use Hospital\Controller\ExceptionController;
+use Hospital\Controller\FrontendController;
 use Melody\Application\Application as BaseApplication;
 use Melody\Application\RouterBuilder\RouterBuilder;
 
@@ -23,7 +24,8 @@ class Application extends BaseApplication
     public  function getControllers()
     {
         return array(
-            "Exception" => new ExceptionController()
+            "Exception" => new ExceptionController(),
+            "Frontend" => new FrontendController()
         );
     }
 
