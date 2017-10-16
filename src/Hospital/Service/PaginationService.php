@@ -41,8 +41,8 @@ class PaginationService implements ContainerAwareInterface
         return array(
             'entities' => $entities->matching($criteria),
             'first' => $first,
-            'next' => ($page + 1) <= $pages ? $page + 1 : null ,
-            'prev' => ($page - 1) >= 1 ? $page - 1 : null,
+            'next' => $page < $pages ? $page + 1 : null ,
+            'prev' => $page > 1 ? $page - 1 : null,
             'page' => $page,
             'pages' => $pages
         );
