@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/www/css/admin.css" />
+{% endblock %}
+
+{% block body %}
+    <header>
+        {% include 'Admin/navbar.html.twig' %}
+    </header>
+    <section class="page">
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <footer>
+            <p>Hospital Dr. Ricardo Gutiérrez </p>
+            <p>Proyecto de Software © 2017.</p>
+        </footer>
+    </section>
+    <script>
+        const header = document.querySelector("body > header")
+        const menu = header.querySelector(".navbar #menu")
+        const scrim = header.children[1]
+
+        menu.onclick = (e) => {
+            e.preventDefault()
+            header.classList.toggle("open")
+
+            if (header.classList.contains("open")) {
+                menu.classList.remove("hamburger")
+                menu.classList.add("close")
+            } else {
+                menu.classList.add("hamburger")
+                menu.classList.remove("close")
+            }
+        }
+
+        scrim.onclick = (e) => {
+            e.preventDefault()
+            header.classList.remove("open")
+
+            menu.classList.add("hamburger")
+            menu.classList.remove("close")
+        }
+    </script>
+{% endblock %}
+

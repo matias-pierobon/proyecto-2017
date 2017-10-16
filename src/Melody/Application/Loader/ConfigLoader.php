@@ -11,7 +11,7 @@ namespace Melody\Application\Loader;
 
 use Melody\Application\Container;
 
-class ConfigLoader extends Loader
+class ConfigLoader implements Loader
 {
 
     /**
@@ -22,7 +22,6 @@ class ConfigLoader extends Loader
         $filename = $container->getParameter('paths.config') . '/config.json';
         $content = file_get_contents($filename);
         $config = json_decode($content, true);
-
         $this->loadParameters($container, $config['parameters']);
     }
 

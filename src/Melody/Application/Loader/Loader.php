@@ -10,9 +10,9 @@ namespace Melody\Application\Loader;
 
 use Melody\Application\Container;
 
-abstract class Loader
+interface Loader
 {
     /* @param Container $container */
-    public abstract function load($container);
+    public function load($container);
 
 }
