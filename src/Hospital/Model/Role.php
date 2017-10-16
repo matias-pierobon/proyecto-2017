@@ -31,14 +31,14 @@ class Role {
     /**
      * Many Roles have Many Permissions.
      * @var Permission[]
-     * @ORM\ManyToMany(targetEntity="Permission", mappedBy="roles")
+     * @ORM\ManyToMany(targetEntity="Permission", mappedBy="roles", cascade={"persist"})
      */
     private $permissions;
 
     /**
      * Many Roles have Many Users.
      * @var User[]
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="roles")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="roles", cascade={"persist"})
      */
     private $users;
 

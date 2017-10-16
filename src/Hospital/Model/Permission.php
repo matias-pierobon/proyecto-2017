@@ -31,7 +31,7 @@ class Permission{
     /**
      * Many Permissions have Many Roles.
      * @var Role[]
-     * @ORM\ManyToMany(targetEntity="Role", inversedBy="permissions")
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="permissions", cascade={"persist"})
      * @ORM\JoinTable(name="permissions_roles")
      */
     private $roles;

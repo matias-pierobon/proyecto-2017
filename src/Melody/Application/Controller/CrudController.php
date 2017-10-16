@@ -45,7 +45,7 @@ abstract class CrudController extends Controller
     }
 
     protected function redirectTo($uri){
-        $url = $this->getRoutePrefix() . '/' . $uri;
+        $url = $this->getRoutePrefix() . $uri;
         return $this->redirect($url);
     }
 
@@ -162,6 +162,7 @@ abstract class CrudController extends Controller
     public function updateAction($request){
         $entity = $this->getEntityByRequest($request);
         $this->processEditRequest($request, $entity);
+
         $this->getEntityManager()->flush();
         return $this->redirectTo('/' . $entity->getId());
     }

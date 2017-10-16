@@ -65,7 +65,7 @@ class User implements UserInterface
     /**
      * Many Users have Many Roles.
      * @var Role[]
-     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users", cascade={"persist"})
      * @ORM\JoinTable(name="users_roles")
      */
     private $roles;
