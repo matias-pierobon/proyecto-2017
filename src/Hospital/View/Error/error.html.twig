@@ -16,6 +16,11 @@
 
         <h3>Error {{ exception.code }}</h3>
         <h4>{{ exception.message }}</h4>
+        <pre>
+            <code>
+                {{ exception.traceAsString }}
+            </code>
+        </pre>
     </section>
     <footer class="text-center">
         <p>Hospital Dr. Ricardo Gutiérrez </p>
