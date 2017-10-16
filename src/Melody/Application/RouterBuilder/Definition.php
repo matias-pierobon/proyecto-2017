@@ -35,7 +35,7 @@ abstract class Definition extends AbstractDefinition {
 
     /* @return string || null */
     public function getController(){
-        return $this->controller || $this->getParentController();
+        return $this->controller ?: $this->getParentController();
     }
 
     /* @return self */
