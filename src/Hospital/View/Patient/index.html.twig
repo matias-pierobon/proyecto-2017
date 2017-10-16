@@ -6,7 +6,7 @@
     <a href="/admin/patient/new" class="btn primary">Crear</a>
 
     <form action="/admin/patient/" method="get">
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp"  style="width: 100%; padding-bottom: 20px;">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp"  style="width: 100%; margin-bottom: 20px;">
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text">Buscar</h2>
         </div>
@@ -47,7 +47,7 @@
     Págin {{ page }} / {{ pages }}
     <a href="/admin/patient/?page={{ next }}" class="btn primary" {% if not next %}disabled{% endif %}>Siguitente</a>
 
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%; padding-top: 20px;">
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%; margin-top: 20px;">
         <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Nombre</th>
