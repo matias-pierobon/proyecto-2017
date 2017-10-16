@@ -6,7 +6,7 @@
     <a href="/admin/patient/new" class="btn primary">Crear</a>
 
     <form action="/admin/patient/" method="get">
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp"  style="width: 100%; padding-bottom: 20px;">
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text">Buscar</h2>
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Get Started
+                Buscar
             </button>
         </div>
     </div>
@@ -47,12 +47,13 @@
     Págin {{ page }} / {{ pages }}
     <a href="/admin/patient/?page={{ next }}" class="btn primary" {% if not next %}disabled{% endif %}>Siguitente</a>
 
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%; padding-top: 20px;">
         <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Nombre</th>
             <th class="mdl-data-table__cell--non-numeric">Direccion</th>
             <th class="mdl-data-table__cell--non-numeric">Telefono</th>
+            <th class="mdl-data-table__cell--non-numeric">Documento</th>
         </tr>
         </thead>
         <tbody>
@@ -61,7 +62,8 @@
             <td class="mdl-data-table__cell--non-numeric"><a href="/admin/patient/{{ patient.id }}">{{ patient }}</a></td>
             <td class="mdl-data-table__cell--non-numeric">{{ patient.email }}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ patient.address }}</td>
-            <td class="mdl-data-table__cell--non-numeric">{{ phone }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ patient.phone }}</td>
+            <td class="mdl-data-table__cell--non-numeric">({{ patient.dniType }}) {{ patient.dni }}</td>
         </tr>
         {% endfor %}
         </tbody>
