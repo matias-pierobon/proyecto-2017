@@ -10,6 +10,8 @@ namespace Hospital\Controller;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Hospital\Model\DniType;
+use Hospital\Model\MedicalInsurance;
 use Hospital\Model\Patient;
 use Hospital\Model\Role;
 use Hospital\Model\User;
@@ -28,7 +30,14 @@ class PatientController extends CrudController
     public function newAction($request)
     {
         $this->denyAccessUnlessGranted('patients_new');
-        return parent::newAction($request);
+
+        $dnyTypes = $this->getRepository(DniType::class)->findAll();
+        $insurances = $this->getRepository(MedicalInsurance::class)->findAll();
+
+        return $this->render($this->getViewFor('new'), array(
+            'dniTypes' => $dnyTypes,
+            'insurances' => $insurances
+        ));
     }
 
     public function createAction($request)
