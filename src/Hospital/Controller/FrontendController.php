@@ -66,6 +66,6 @@ class FrontendController extends Controller
     {
         $request->getSession()->set('user', null);
 
-        return $this->redirect('/admin');
+        return $this->redirect('/');
     }
 }
