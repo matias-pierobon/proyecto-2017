@@ -11,7 +11,9 @@ namespace Hospital;
 use Hospital\Controller\AdminController;
 use Hospital\Controller\ExceptionController;
 use Hospital\Controller\FrontendController;
+use Hospital\Controller\PatientController;
 use Hospital\Controller\UserController;
+use Hospital\Model\Patient;
 use Hospital\Twig\TwigApp;
 use Melody\Application\Application as BaseApplication;
 use Melody\Application\RouterBuilder\RouterBuilder;
@@ -37,7 +39,8 @@ class Application extends BaseApplication
             "Exception" => new ExceptionController(),
             "Frontend" => new FrontendController(),
             "Admin" => new AdminController(),
-            "User" => new UserController()
+            "User" => new UserController(),
+            "Patient" => new PatientController()
         );
     }
 
