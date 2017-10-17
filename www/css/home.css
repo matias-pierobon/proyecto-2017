@@ -249,6 +249,9 @@ body > footer{
     border-top: 1px solid #e4eaec;
     min-height: 44px;
 }
+body > footer p{
+    margin: inherit;
+}
 
 @media (max-width: 575px) {
 

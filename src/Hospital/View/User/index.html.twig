@@ -4,65 +4,82 @@
     <li class="active">Usuarios</li>
 {% endblock %}
 
+{% block actions %}
+    <a href="/admin/user/new" class="btn primary">Crear Nuevo</a>
+{% endblock %}
+
 
 {% block pageContent %}
 
-    <a href="/admin/user/new" class="btn primary">Crear</a>
-
-    <form action="/admin/user/" method="get">
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%; margin-bottom: 20px;">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Buscar</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                <div class="form-group">
-                    <div class="input-affix">
-                        <i class="prefix material-icons">person</i>
-                        <input name="username" class="full-width" type="text" placeholder="Nombre de Usuario" value="" />
+    <div class="card full-width">
+        <div class="card-body">
+            <form action="/admin/user/" method="get">
+                <div class="row no-margin">
+                    <div class="col xs-12 md-8">
+                        <div class="input-affix">
+                            <i class="prefix material-icons">person</i>
+                            <input name="username" class="full-width" type="text" placeholder="Buscar username"
+                                   value="{{ app.request.query.get('username') | default('') }}"/>
+                        </div>
+                    </div>
+                    <div class="col xs-12 md-4">
+                        <select name="enabled" class="full-width" onchange="submit();">
+                            <option value="-1">Sin filtro de estado</option>
+                            <option value="0" {% if app.request.query.get('enabled') == 0 %}selected{% endif %}>Bloqueado</option>
+                            <option value="1" {% if app.request.query.get('enabled') == 1 %}selected{% endif %}>Activo</option>
+                        </select>
                     </div>
                 </div>
-                <label for="enabled">Estado</label>
-                <div class="form-group">
-                    <select name="enabled" class="full-width">
-                        <option value="-1" selected>Sin Filtro</option>
-                        <option value="0">Bloqueado</option>
-                        <option value="1">Activo</option>
-                    </select>
-                </div>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    Buscar
-                </button>
-            </div>
+            </form>
         </div>
-    </form>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Correo Electrónico</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for user in entities %}
+                    <tr>
+                        <td><a href="/admin/user/{{ user.id }}">{{ user.username }}</a></td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.fullName }}</td>
+                        <td>{% if user.enabled %}activo{% else %}bloqueado{% endif %}</td>
+                        <td>
+                            <div class="btn-group" role="button" aria-label="actions">
+                                <a href="/admin/user/{{ user.id }}" class="btn primary">Ver</a>
+                                <a href="/admin/user/{{ user.id }}/edit" class="btn primary">Editar</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-danger">No se encontraron usuarios</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% if pages > 1 %}
+            <nav class="btn-toolbar pull-right" role="toolbar" aria-label="The pagination bar">
+                <div class="btn-group" role="group" aria-label="Pagination">
+                    {% for pageIndex in range(1, pages) %}
+                        <a href="/admin/user/?page={{ pageIndex }}&username={{
+                            app.request.query.get('username') | default('')
+                        }}&enabled={{ app.request.query.get('enabled') | default('-1') }}"
+                           class="btn {% if pageIndex == page %}primary{% endif %}" >{{ pageIndex }}</a>
+                    {% endfor %}
+                </div>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
 
 
-    <a href="/admin/user/?page={{ prev }}" class="btn primary" {% if prev < 1 %}disabled{% endif %}>Anterior</a>
-    Págin {{ page }} / {{ pages }}
-    <a href="/admin/user/?page={{ next }}" class="btn primary" {% if next > pages %}disabled{% endif %}>Siguitente</a>
-    
-    <br>
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%; margin-top: 20px;">
-        <thead>
-        <tr>
-            <th class="mdl-data-table__cell--non-numeric">Nombre de Usuario</th>
-            <th class="mdl-data-table__cell--non-numeric">Email</th>
-            <th class="mdl-data-table__cell--non-numeric">Nombre Completo</th>
-            <th class="mdl-data-table__cell--non-numeric">Estado</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in entities %}
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><a href="/admin/user/{{ user.id }}">{{ user.username }}</a></td>
-            <td class="mdl-data-table__cell--non-numeric">{{ user.email }}</td>
-            <td class="mdl-data-table__cell--non-numeric">{{ user.fullName }}</td>
-            <td class="mdl-data-table__cell--non-numeric">{% if user.enabled %}activo{% else %}bloqueado{% endif %}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 {% endblock %}
 

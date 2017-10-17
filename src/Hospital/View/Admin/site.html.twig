@@ -1,40 +1,58 @@
 {% extends 'Admin/base.html.twig' %}
 
 {% block content %}
-    <form action="/admin/config" method="post">
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Welcome</h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-            <div class="form-group">
-                <label for="title">Título:</label>
-                <input name="title" class="full-width" type="text" placeholder="Titulo" value="{{  site.title }}" required />
-            </div>
-            <div class="form-group">
-                <label for="contact">Contacto:</label>
-                <input name="contact" class="full-width" type="email" placeholder="Contacto" value="{{  site.contact }}" required />
-            </div>
-            <div class="form-group">
-                <label for="description">Descripción:</label>
-                <textarea name="description" class="full-width" cols="30" rows="10">{{ site.description }}</textarea>
-            </div>
-            <div class="form-group">
-                <label for="title">Elementos Máximos:</label>
-                <input name="maxElements" class="full-width" type="number" placeholder="Elementos Máximos" value="{{ site.maxElements }}" required />
-            </div>
-            <div class="form-group">
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="enabled">
-                    <input name="enabled" type="checkbox" id="enabled" class="mdl-checkbox__input" {% if site.enabled %}checked{% endif %}>
-                    <span class="mdl-checkbox__label">Frontend Activo</span>
-                </label>
-            </div>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-            <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Modificar
-            </button>
+    <div class="page-header">
+        <h1 class="page-title">Configuración</h1>
+        <div class="actions"></div>
+    </div>
+    <div class="page-content">
+
+
+        <div class="card full-width">
+            <form action="/admin/config" method="post">
+                <div class="card-body">
+                    <h4 class="card-title">Configuraciones del sistema</h4>
+                    <div class="row">
+                        <div class="col xs-12 sm-4 md-3 lg-2"><label for="title">Título:</label></div>
+                        <div class="col xs-12 sm-8 md-9 lg-10">
+                            <input name="title" class="full-width" type="text" placeholder="Titulo" value="{{ site.title }}"
+                               required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col xs-12 sm-4 md-3 lg-2"><label for="contact">Contacto:</label></div>
+                        <div class="col xs-12 sm-8 md-9 lg-10">
+                        <input name="contact" class="full-width" type="email" placeholder="Contacto"
+                               value="{{ site.contact }}" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col xs-12 sm-4 md-3 lg-2"><label for="description">Descripción:</label></div>
+                        <div class="col xs-12 sm-8 md-9 lg-10">
+                        <textarea name="description" class="full-width" cols="30"
+                                  rows="10">{{ site.description }}</textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col xs-12 sm-4 md-3 lg-2"><label for="title">Elementos Máximos:</label></div>
+                        <div class="col xs-12 sm-8 md-9 lg-10">
+                        <input name="maxElements" class="full-width" type="number" placeholder="Elementos Máximos"
+                               value="{{ site.maxElements }}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input type="checkbox" id="enabled" name="enabled" {% if site.enabled %} checked {% endif %}>
+                                <label for="enabled">Frontend Activo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary">
+                        Modificar Sistema
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-    </form>
 {% endblock %}

@@ -4,6 +4,6 @@
     "db.user": "grupo35",
     "db.password": "MzQ2YTVmNzdkNDg5",
     "db.database": "grupo35",
-    "db.host": "127.0.0.1"
+    "db.host": "db"
   }
 }

@@ -9,11 +9,10 @@
 
 {% block pageContent %}
 
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Modificar Paciente</h2>
-        </div>
-        <div class="mdl-card__supporting-text">
+    <div class="card full-width">
+        <div class="card-body">
+            <h4 class="card-title">Editar</h4>
+
             <form action="/admin/patient/{{ patient.id }}/edit" method="post">
                 <div class="form-group">
                     <div class="input-affix">
@@ -21,9 +20,13 @@
                         <input name="email" class="full-width" type="email" placeholder="Correo electrónico" value="{{  patient.email }}" required />
                     </div>
                 </div>
-                <div class="form-group">
-                    <input name="firstName" class="full-width" type="text" placeholder="Nombre" value="{{ patient.firstName }}" required/>
-                    <input name="lastName" class="full-width" type="text" placeholder="Apellido" value="{{ patient.lastName }}" required/>
+                <div class="row">
+                    <div class="col xs-6 form-group">
+                        <input name="firstName" class="full-width" type="text" placeholder="Nombre" value="{{ patient.firstName }}" required/>
+                    </div>
+                    <div class="col xs-6 form-group">
+                        <input name="lastName" class="full-width" type="text" placeholder="Apellido" value="{{ patient.lastName }}" required/>
+                    </div>
                 </div>
                 <label for="birthDate">Nacimiento:</label>
                 <div class="form-group">
@@ -42,17 +45,21 @@
                         <option value="1" {% if patient.sex %}selected{% endif %}>Masculino</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <input name="dni" class="full-width" type="text" placeholder="DNI" value="{{ patient.dni }}" />
-                    <select name="dniType" class="full-width">
-                        {% for dniType in dniTypes %}
-                            <option value="{{ dniType.id }}"
-                                    {% if patient.dniType.id == dniType.id %}
-                                        selected
-                                    {% endif %}
-                            >{{ dniType }}</option>
-                        {% endfor %}
-                    </select>
+                <div class="row">
+                    <div class="col xs-12 form-group">
+                        <input name="dni" class="full-width" type="text" placeholder="DNI" value="{{ patient.dni }}" />
+                    </div>
+                    <div class="col xs-6 form-group">
+                        <select name="dniType" class="full-width">
+                            {% for dniType in dniTypes %}
+                                <option value="{{ dniType.id }}"
+                                        {% if patient.dniType.id == dniType.id %}
+                                            selected
+                                        {% endif %}
+                                >{{ dniType }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
                 <label for="birthDate">Obra Social:</label>
                 <div class="form-group">
@@ -68,7 +75,7 @@
                     </select>
                 </div>
 
-                <button class="btn primary" type="submit">Modificar</button>
+                <button class="btn primary" type="submit">Modificar Paciente</button>
             </form>
         </div>
     </div>

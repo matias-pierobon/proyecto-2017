@@ -57,7 +57,7 @@ class DemographicController extends Controller
         $demographic = new DemographicData();
         $demographic->setElectricity($request->getRequest()->get('electricity', 'off') == 'on');
         $demographic->setRefrigerator($request->getRequest()->get('refrigerator', 'off') == 'on');
-        $demographic->setPet($request->getRequest()->get('pet', 'on') == 'off');
+        $demographic->setPet($request->getRequest()->get('pet', 'off') == 'on');
 
         $waterType = $this->getRepository(WaterType::class)->find($request->getRequest()->get('waterType'));
         $houseType = $this->getRepository(HouseType::class)->find($request->getRequest()->get('houseType'));
@@ -107,7 +107,7 @@ class DemographicController extends Controller
         $demographic = $this->getPatient()->getDemographicData();
         $demographic->setElectricity($request->getRequest()->get('electricity', 'off') == 'on');
         $demographic->setRefrigerator($request->getRequest()->get('refrigerator', 'off') == 'on');
-        $demographic->setPet($request->getRequest()->get('pet', 'on') == 'off');
+        $demographic->setPet($request->getRequest()->get('pet', 'off') == 'on');
 
         $waterType = $this->getRepository(WaterType::class)->find($request->getRequest()->get('waterType'));
         $houseType = $this->getRepository(HouseType::class)->find($request->getRequest()->get('houseType'));

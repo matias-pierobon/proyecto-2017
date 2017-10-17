@@ -5,43 +5,55 @@
     <li class="active">{{ entity.username }}</li>
 {% endblock %}
 
+{% block actions %}
+    <a href="/admin/user/{{ entity.id }}/edit" class="btn primary"> Editar </a>
+{% endblock %}
+
 
 {% block pageContent %}
 
-    <h1>{{ entity.fullName }}</h1>
-
-    <a href="/admin/user/{{ entity.id }}/edit" class="btn primary"> Editar </a>
-
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Datos</h2>
+    <div class="row">
+        <div class="col xs-12 md-6">
+            <div class="card full-width">
+                <div class="card-body">
+                    <h4 class="card-title">Datos del Usuario</h4>
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr><th width="200px">Nombre de usuario:</th><td>{{ entity.username }}</td></tr>
+                        <tr><th>Nombre:</th><td>{{ entity.firstName }}</td></tr>
+                        <tr><th>Apellido:</th><td>{{ entity.lastName }}</td></tr>
+                        <tr><th>Mail:</th><td>{{ entity.email }}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="mdl-card__supporting-text">
-            <p>Nombre de usuario: {{ entity.username }}</p>
-            <p>Nombre: {{ entity.firstName }}</p>
-            <p>Apellido: {{ entity.lastName }}</p>
-            <p>Mail: {{ entity.email }}</p>
+        <div class="col xs-12 md-6">
+
+            <div class="card full-width">
+                <div class="card-body">
+                    <h4 class="card-title">Roles del Usuario</h4>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nombre del Rol</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for role in entity.roles %}
+                            <tr>
+                                <td>{{ role }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td class="text-danger">Usuario sin Roles</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-
-    <h3>Roles:</h3>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-        <thead>
-        <tr>
-            <th class="mdl-data-table__cell--non-numeric">Nombre del Rol</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for role in entity.roles %}
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric">{{ role }}</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric">Usuario sin Roles</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 {% endblock %}
 

@@ -1,6 +1,8 @@
 .btn {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     height: 28px;
     margin: 0;
     font-size: 12px;

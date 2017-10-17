@@ -3,7 +3,7 @@ form.inline{
     flex-flow: row wrap;
     align-items: center;
 }
-input{
+input, select, textarea{
     position: relative;
     display: flex;
     padding: 4px 7px;
@@ -16,12 +16,19 @@ input{
     border-radius: 4px;
     transition: all .3s;
 }
+select, textarea{
+    height: initial;
+}
 
-input:focus, input:hover {
+input:focus, input:hover,
+select:focus, select:hover,
+textarea:focus, textarea:hover{
     border-color: #49a9ee;
 }
 
-input:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: 0;
     box-shadow: 0 0 0 2px rgba(16,142,233,.2);
 }

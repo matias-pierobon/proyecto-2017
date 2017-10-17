@@ -1,0 +1,9 @@
+{% extends "Patient/base.html.twig" %}
+
+{% block breadcrumb %}
+    <li><a href="/admin/patient/">Pacientes</a></li>
+    <li><a href="/admin/patient/{{ patient.id }}">{{ patient }}</a></li>
+    <li>Datos Demográficos</li>
+    {% block demoBreadcrumb %}{% endblock %}
+{% endblock %}
+

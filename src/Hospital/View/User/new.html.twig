@@ -7,11 +7,11 @@
 
 
 {% block pageContent %}
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Crear Usuario</h2>
-        </div>
-        <div class="mdl-card__supporting-text">
+
+
+    <div class="card full-width">
+        <div class="card-body">
+            <h4 class="card-title">Nuevo</h4>
             <form action="/admin/user/new" method="post">
                 <div class="form-group">
                     <div class="input-affix">
@@ -31,11 +31,19 @@
                         <input name="rawPassword" class="full-width" type="password" placeholder="Contraseña" value="" required/>
                     </div>
                 </div>
-                <div class="form-group">
-                    <input name="firstName" class="full-width" type="text" placeholder="Nombre" value="" required/>
-                    <input name="lastName" class="full-width" type="text" placeholder="Apellido" value="" required/>
+                    <div class="row">
+                        <div class="col xs-12 md-6">
+                            <div class="form-group full-width">
+                            <input name="firstName" class="full-width" type="text" placeholder="Nombre" value="" required/>
+                            </div>
+                        </div>
+                        <div class="col xs-12 md-6">
+                            <div class="form-group full-width">
+                            <input name="lastName" class="full-width" type="text" placeholder="Apellido" value="" required/>
+                            </div>
+                        </div>
                 </div>
-                <button class="btn primary" type="submit">Crear</button>
+                <button class="card-link btn primary" type="submit">Crear Usuario</button>
             </form>
         </div>
     </div>

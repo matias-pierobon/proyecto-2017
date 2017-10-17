@@ -104,8 +104,8 @@ abstract class Application  implements ContainerAwareInterface{
         $loaders = array(
             new PathsLoader(),
             new ConfigLoader(),
-            new TwigLoader(),
             new DoctrineLoader(),
+            new TwigLoader(),
             new ServiceLoader()
         );
 

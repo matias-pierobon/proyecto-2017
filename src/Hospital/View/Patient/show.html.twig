@@ -6,52 +6,109 @@
 {% endblock %}
 
 
+
+{% block actions %}
+    <div class="btn-group">
+        <a href="/admin/patient/{{ entity.id }}/edit" class="btn primary"> Editar Paciente </a>
+        {% if entity.demographicData %}
+            <a href="/admin/patient/{{ entity.id }}/demographic/edit" class="btn primary">Modificar Datos
+                Demográficos</a>
+        {% else %}
+            <a href="/admin/patient/{{ entity.id }}/demographic/add" class="btn primary"> Agregar Datos
+                Demográficos </a>
+        {% endif %}
+    </div>
+{% endblock %}
+
 {% block pageContent %}
 
-    <h1>{{ entity }}</h1>
-
-    <a href="/admin/patient/{{ entity.id }}/edit" class="btn primary"> Editar </a>
-
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%; margin: 20px 0;">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Datos</h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-            <p>Nombre: {{ entity.firstName }}</p>
-            <p>Apellido: {{ entity.lastName }}</p>
-            <p>Mail: {{ entity.email }}</p>
-            <p>Dirección: {{ entity.address }}</p>
-            <p>Teléfono: {{ entity.phone | default("-") }}</p>
-            <p>Nacimiento: {{ entity.birthDate | date ("d/m/Y")}}</p>
-            <p>Sexo: {{ entity.sexText }}</p>
-            <p>DNI: ({{ entity.dniType }}) {{ entity.dni }}</p>
-            <p>Obra Social: {{ entity.medicalInsurance | default("-") }}</p>
+<div class="row">
+    <div class="col xs-12 md-6">
+        <div class="card full-width">
+            <div class="card-body">
+                <h4 class="card-title">Datos del Paciente</h4>
+                <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                        <th width="200px">Nombre:</th>
+                        <td>{{ entity.firstName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Apellido:</th>
+                        <td>{{ entity.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mail:</th>
+                        <td>{{ entity.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Dirección:</th>
+                        <td>{{ entity.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono:</th>
+                        <td>{{ entity.phone | default("-") }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nacimiento:</th>
+                        <td>{{ entity.birthDate | date ("d/m/Y") }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sexo:</th>
+                        <td>{{ entity.sexText }}</td>
+                    </tr>
+                    <tr>
+                        <th>DNI:</th>
+                        <td>({{ entity.dniType }}) {{ entity.dni }}</td>
+                    </tr>
+                    <tr>
+                        <th>Obra Social:</th>
+                        <td>{{ entity.medicalInsurance | default("-") }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     {% if entity.demographicData %}
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%;">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Datos Demográficos</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                <p>Nombre: {{ entity.firstName }}</p>
-                <p>Heladera: {% if entity.demographicData.refrigerator %}Si{% else %}No{% endif %}</p>
-                <p>Electricidad: {% if entity.demographicData.electricity %}Si{% else %}No{% endif %}</p>
-                <p>Mascota(s): {% if entity.demographicData.pet %}Si{% else %}No{% endif %}</p>
+        <div class="col xs-12 md-6">
+            <div class="card full-width">
+                <div class="card-body">
+                    <h4 class="card-title">Datos Demográficos</h4>
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <th width="200px">Heladera:</th>
+                            <td>{% if entity.demographicData.refrigerator %}Si{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Electricidad:</th>
+                            <td>{% if entity.demographicData.electricity %}Si{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Mascota(s):</th>
+                            <td>{% if entity.demographicData.pet %}Si{% else %}No{% endif %}</td>
+                        </tr>
 
-                <p>Tipo de vivienda: {{ entity.demographicData.houseType }}</p>
-                <p>Tipo de calefacción: {{ entity.demographicData.heatingType }}</p>
-                <p>Tipo de agua: {{ entity.demographicData.waterType }}</p>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a href="/admin/patient/{{ entity.id }}/demographic/edit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    Modificar Datos
-                </a>
+                        <tr>
+                            <th>Tipo de vivienda:</th>
+                            <td>{{ entity.demographicData.houseType }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tipo de calefacción:</th>
+                            <td>{{ entity.demographicData.heatingType }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tipo de agua:</th>
+                            <td>{{ entity.demographicData.waterType }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    {% else %}
-        <a href="/admin/patient/{{ entity.id }}/demographic/add" class="btn primary"> Agregar datos demográficos </a>
     {% endif %}
-{% endblock %}
+</div>
+    {% endblock %}
 

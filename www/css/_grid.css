@@ -25,6 +25,10 @@
     padding: 0 8px;
 }
 
+.row:not(.no-margin)>.col{
+    margin-bottom: 16px;
+}
+
 .col.xs-1 {
     flex: 0 0 8.333334%;
     max-width: 8.333334%;
