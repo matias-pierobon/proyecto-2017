@@ -16,6 +16,10 @@
     align-items: flex-start;
 }
 
+.page .content .page-content{
+    padding: 30px 30px;
+}
+
 .page footer{
     padding: 10px 30px;
     display: flex;
