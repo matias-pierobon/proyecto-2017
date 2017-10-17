@@ -1,6 +1,12 @@
-{% extends "Admin/base.html.twig" %}
+{% extends "Patient/base.html.twig" %}
 
-{% block content %}
+{% block breadcrumb %}
+    <li><a href="/admin/patient/">Pacientes</a></li>
+    <li class="active">{{ entity }}</li>
+{% endblock %}
+
+
+{% block pageContent %}
 
     <h1>{{ entity }}</h1>
 

@@ -1,6 +1,12 @@
-{% extends "Admin/base.html.twig" %}
+{% extends "User/base.html.twig" %}
 
-{% block content %}
+{% block breadcrumb %}
+    <li><a href="/admin/user/">Usuarios</a></li>
+    <li class="active">{{ entity.username }}</li>
+{% endblock %}
+
+
+{% block pageContent %}
 
     <h1>{{ entity.fullName }}</h1>
 

@@ -1,9 +1,11 @@
-{% extends "Admin/base.html.twig" %}
+{% extends "User/base.html.twig" %}
 
-{% block content %}
+{% block breadcrumb %}
+    <li class="active">Usuarios</li>
+{% endblock %}
 
-    <h1>Usuarios</h1>
 
+{% block pageContent %}
 
     <a href="/admin/user/new" class="btn primary">Crear</a>
 

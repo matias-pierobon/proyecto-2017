@@ -1,6 +1,11 @@
-{% extends "Admin/base.html.twig" %}
+{% extends "Patient/base.html.twig" %}
 
-{% block content %}
+{% block breadcrumb %}
+    <li class="active">Pacientes</li>
+{% endblock %}
+
+
+{% block pageContent %}
 
     <h1>Pacientes</h1>
     <a href="/admin/patient/new" class="btn primary">Crear</a>

@@ -1,7 +1,12 @@
-{% extends "Admin/base.html.twig" %}
+{% extends "User/base.html.twig" %}
 
-{% block content %}
+{% block breadcrumb %}
+    <li><a href="/admin/user/">Usuarios</a></li>
+    <li class="active">Nuevo</li>
+{% endblock %}
 
+
+{% block pageContent %}
     <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 100%">
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text">Crear Usuario</h2>
